@@ -2,6 +2,6 @@ Team Roles:
 
 Scrum Master: Tahmid Kazi
 Requirements Manager: Henry Nixon
-Testing Manager: Charles
-Software Architect: Jacob
+Testing Manager: Charles Ferraro
+Software Architect: Jacob Clatterbuck
 Configuration Manager: Eric He
