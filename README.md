@@ -1,22 +1,16 @@
-Team Roles:
-
-
 # Project: UVA Craiglist
 
-One Paragraph of project description goes here
+An online marketplace for UVA students to enable them to buy and sell goods and services to other fellow students. Modeled after the online marketplace: Craigslist.
 
 ## Team Roles:
 
-### Scrum Master: Tahmid Kazi
-### Requirements Manager: Henry Nixon
-### Testing Manager: Charles Ferraro
-### Software Architect: Jacob Clatterbuck
-### Configuration Manager: Eric He
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+### Scrum Master: 
+#### Tahmid Kazi
+### Requirements Manager: 
+#### Henry Nixon
+### Software Architect: 
+#### Jacob Clatterbuck
+### Testing Manager: 
+#### Charles Ferraro
+### Configuration Manager: 
+#### Eric He
