@@ -1,17 +1,17 @@
 Team Roles:
 
-Scrum Master: Tahmid Kazi;
-Requirements Manager: Henry Nixon;
-Testing Manager: Charles Ferraro;
-Software Architect: Jacob Clatterbuck;
-Configuration Manager: Eric He
-# Project Title
+
+# Project: UVA Craiglist
 
 One Paragraph of project description goes here
 
-## Getting Started
+## Team Roles:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### Scrum Master: Tahmid Kazi
+### Requirements Manager: Henry Nixon
+### Testing Manager: Charles Ferraro
+### Software Architect: Jacob Clatterbuck
+### Configuration Manager: Eric He
 
 ### Prerequisites
 
