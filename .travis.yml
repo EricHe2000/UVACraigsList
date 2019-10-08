@@ -1,3 +1,14 @@
 language: python
 python:
 - '3.6'
+install:
+- pip install -r requirements-travis.txt
+script:
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: WaYcAzCzLxDhyl4ZEOJLK6y0Un4rTwfOxryhYGPe61V7lU/TndG2KsxMlTGdxvb/Jc5tbUMBWBSevSwpFwmWO1JP4Mjk1W4lolWmr5Kxac7qYoj5bNZf1avmT0VEWu8OJ2ctTKkAEZE0WLzoxJQrevsVLjv3MMffYUkFUXmEd02j1MHAdkK2vTnyXjOMzPTqjJYRQU8pod0W47fLr8QSmJ1YnXc4SnRWWDiXWHHYMhlwfL9B3CcjGHvC9O9Sp33MWHAamDarsGtIyCyRgjC5UWTkV3PAax8ze+3BaSFp1FxEgxR8hAbvI1ChpOqcNCEmaT2XVM1Ndj4f2JzPct7gbUy26Ub9MdR8hLtfBwINRZlBVSJ7uVEr7U9P0n9NVZflNZsCrG0mi17sQ1rjUQANtd+Xsi4WBy/hPDo7GuBuVHDQi91t9aI8KrkapM0t5FIphY/4Iu9SedbxVIQAWg1N86cfNjfQ4VZb1EjtOpuN28FMlwGlDmr+5yPhgt16YnNCcHyp1zxEMal1duERk7mHk2PC8P1M5tu63rUphTkyKEzsGh0a/X6B/3L3/jYRSPW1fPV/zLyJYP41NvRJKOLvmCIos0WLru+VwCxH313FPsc2OObsU7Ub4xhli5lVJS0Vt91HlwxFwnMF1/LrYzw3R3m6uJWAFryn+JaXWbYrtNc=
+  app: UVA-Craigslist
+  on:
+    repo: uva-cs3240-f19/UVA-Craigslist
