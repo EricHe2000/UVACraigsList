@@ -2,8 +2,4 @@ Django
 gunicorn
 django_heroku
 bootstrap4
-allauth
-allauth.account
-allauth.socialaccount
-allauth.socialaccount.providers.google
-login
+django-allauth
