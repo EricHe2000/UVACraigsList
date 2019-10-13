@@ -1,9 +1,186 @@
-{% if posts_list %}
-    <ul>
-    {% for postCount in posts_list %}
-        <li><a href="/posts/{{ postCount.id }}/">{{ postCount.titleText }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No posts are available.</p>
+<!--
+UVA Craigslist
+Main Page
+Updated:
+10/13/2019 by Charles Ferraro
+-->
+
+<!--
+Quick Guide to CSS:
+https://www.w3schools.com/css/css_howto.asp
+https://www.w3schools.com/css/css_specificity.asp
+-->
+
+<!-- 
+This is a comment in HTML.
+There are no single line comments in HTML. 
+Only block and its this.
+ -->
+ 
+<!--
+NOTE: PLEASE PROPERLY INDENT THE HTML ELEMENTS.
+Indenting has no effect on the code, but it makes it a lot nicer.
+-->
+
+<!--
+The head tag is not for displaying elements. 
+It can display elements, but that use is discouraged. 
+The page header does NOT go in here.
+The head tag is supposed to contain metadata.
+The following tags are metadata: <title>, <style>, <meta>, <link>, <script>, and <base>.
+-->
+<head>
+
+	<!-- 
+	This sets the title of the browser tab.
+	-->
+	<title>Posts</title>
+
+	<!-- 
+	This links an external css file in the directory of index.html.
+	Within postsStylesheet.css are the rules to style this html page.
+	-->
+	<link rel="stylesheet" type="text/css" href="postsStylesheet.css">
+	
+	<!--
+	This adds bootstrap elements, but as external links.
+	I didn't feel like building it from file, though this does need to be changed.
+	-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
+	<!--
+	This includes the javascript that is necessrary to make the bootstrap features work.
+	-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+	<!-- 
+	This defines the character set used in the page.
+	This really doesn't do much.
+	-->
+	<meta charset="UTF-8">
+	
+	<!--
+	Loads bootstrap 4.
+	-->
+	{% load bootstrap4 %}
+
+</head>
+
+<!--
+Bootstrap Header
+-->
+<header>
+
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a class="navbar-brand" href="/posts">UVA Listings</a>
+			<form style="display: inline-block; width: 50%">
+				<span>
+					<input style="width: 80%; margin-top: 10px; margin-bottom: -5px; display: inline-block;" type="text" class="form-control" placeholder="Search">
+					<button style="display: inline-block; margin-top: -10px;" type="submit">Submit</button>
+				</span>
+			</form>
+			
+			<!--
+			Insert span elements here if you want to add an option to the header.
+			-->
+			
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Link</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+</header>
+ 
+<body>
+
+	<button type="submit">New Post</button>
+
+	{% if postList %}
+
+		<!--
+		The variable forloop.counter returns the current iteration number
+		-->
+		{% for postVar in postList %}
+
+			<!--
+			The element <div> is a generic block element in HTML.
+			Don't use the <p> element unless you're literally using it for a paragraph.
+			As a side note the generic inline element in HTML is the <span> element. 
+			The span element is not shown here.
+			-->
+			<div><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a></div>
+			
+		{% endfor %}
+
+	{% else %} 
+
+		<p>No posts are available.</p>
+		
+	{% endif %}
+
+</body>
+
+
+
+<!-- Example of accessing elements within an array that is passed by a dictionary
+{% if test_array %}
+
+	<ul>
+	{% for test in test_array %}
+	 
+		<li> {{ test }} </li>
+	
+	{% endfor %} 
+	</ul>
+	
 {% endif %}
+-->
