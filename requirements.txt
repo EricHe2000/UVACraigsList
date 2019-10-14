@@ -10,6 +10,7 @@ gunicorn==19.9.0
 isort==4.3.21
 lazy-object-proxy==1.4.2
 mccabe==0.6.1
+pillow==6.2.0
 psycopg2==2.8.3
 pygame==1.9.6
 pylint==2.3.1
