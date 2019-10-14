@@ -11,3 +11,5 @@ def profile(request, pk=None):
         user = request.user
     args = {'user': user}
     return render(request, 'login/profile.html', args)
+
+  
