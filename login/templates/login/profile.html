@@ -1,0 +1,41 @@
+
+
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Profile</h1>
+    <h3>We have some Data but will need you to fill in some more!</h3>
+    <p>Username: {{ user }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+
+    <form action="/your-name/" method="post">
+    <label for="your_ID">Computing ID: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+	</form>
+
+	 <form action="/your-email/" method="post">
+    <label for="email">UVA Email: </label>
+    <input id="Email" type="email" name="Email" value="{{ user.email }}">
+    <input type="submit" value="OK">
+	</form>
+
+	<form action="/your-phone/" method="post">
+    <label for="Phone">Phone Number: </label>
+    <input id="Email" type="number" name="Phone" value="{{ user.phone }}">
+    <input type="submit" value="OK">
+	</form>
+
+	<form action="/your-address/" method="post">
+    <label for="Phone">UVA Address: </label>
+    <input id="Address" type="text" name="address" value="{{ user.address }}">
+    <input type="submit" value="OK">
+</div>
+
+	
+{% endblock %}
