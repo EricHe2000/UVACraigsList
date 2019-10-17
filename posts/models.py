@@ -9,3 +9,5 @@ class Post(models.Model):
     creation_date = models.DateField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     #https://djangopackages.org/packages/p/django-location-field/
+    def __str__(self):
+        return self.titleText

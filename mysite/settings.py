@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'posts.apps.PostsConfig',
     'gunicorn',
     'django_heroku',
     'bootstrap4',
@@ -139,3 +140,4 @@ AUTHENTICATION_BACKENDS = (
 django_heroku.settings(locals())
 
 SITE_ID = 1
+
