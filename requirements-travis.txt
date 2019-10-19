@@ -3,3 +3,4 @@ gunicorn
 django_heroku
 bootstrap4
 django-allauth
+pillow
