@@ -7,6 +7,9 @@ from .models import Post
 from django.http import HttpResponse
 from django.utils import timezone
 
+#Citations
+# http://www.learningaboutelectronics.com/Articles/How-to-insert-data-into-a-database-from-an-HTML-form-in-Django.php
+
 
 # Create your views here.
 '''
@@ -33,8 +36,65 @@ def index(request):
     context = {'postList': postList, 'testArray': testArray}
     
     return render(request, 'posts/index.html', context)
- 
 
+def newPost(request):
+
+    #template_name = 'posts/index.html'
+    postList = Post.objects.order_by('-creation_date')[:3]
+    testArray = {1, 2, 3} 
+ 
+    context = {'postList': postList, 'testArray': testArray}
+    
+    return render(request, 'posts/newPost.html', context)
+
+
+def newPostTest(request):
+
+    post=Post()
+    post.titleText = "test"
+    post.description = "test"
+    post.creation_date = '2006-10-25'
+    postID = 5
+    category="test"
+    post.save()
+
+    if request.method == 'POST':
+       
+        
+        post=Post()
+        post.titleText = request.POST['titleText']
+        post.description= request.POST['description']
+        post.save()
+        
+        '''
+        titleText = request.POST['titleText']
+        description = request.POST['description']
+        
+        post = Post.objects.create(
+            titleText = titleText,
+            description = description
+        )
+        '''
+        return render(request, 'posts/index.html')  
+
+    else:
+            return render(request,'posts/index.html')
+
+'''
+def Post(request):
+    
+    
+    selected_choice = request.POST['choice']
+    
+    post.Post();
+    
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+'''
 class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'posts/detail.html'

@@ -1,0 +1,30 @@
+{% include "header.html" %}
+
+<head>
+
+<head>
+
+
+<body>
+
+	<div>Create a Post </div>
+	
+	<form action="" method="POST">
+	
+		{% csrf_token %}
+	
+		<div>Title:</div> 
+		<input type="text" name="titleText"/>
+		<br/>
+		<br/>
+		<div>Description:</div> 
+		<textarea cols="35" rows="8" name="description">
+		</textarea>
+		<br/>
+		<input type="submit" value="Submit"/>
+		
+		
+	</form>
+	
+	
+</body>

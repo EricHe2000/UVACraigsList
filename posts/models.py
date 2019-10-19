@@ -15,3 +15,4 @@ class Post(models.Model):
         return self.creation_date >= timezone.now() - datetime.timedelta(days=1)
     def __str__(self):
         return self.titleText
+    
