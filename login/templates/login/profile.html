@@ -58,6 +58,7 @@
     <h1>My fake blog!</h1>
     {% if user.is_authenticated %}
       <p>Logged as {{ user.username }}</p>
+      <a class="btn btn-primary" href="{% url 'login:logout' %}">Logout</a>
     {% else %}
       <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
         Login

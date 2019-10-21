@@ -11,5 +11,5 @@ app_name = 'login'
 urlpatterns= [
 	path('', TemplateView.as_view(template_name='login/profile.html')),
 	path('', include('social_django.urls', namespace='social')),
-  	path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},name='logout'),
+  	path('logout', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},name='logout'),
     ]
