@@ -15,6 +15,6 @@ class PostModelTests(TestCase):
     
         future_post = Post(creation_date=time)
     
-        self.assertIs(future_post.was_published_recently(), True)
+        self.assertIs(future_post.was_published_recently(), False)
 
 # Create your tests here.
