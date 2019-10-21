@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login',
+    'social_django',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -131,10 +132,19 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    #'allauth.account.auth_backends.AuthenticationBackend', # comment out b/c i think it may break things
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '521191757849-844nu3kfkpineu53ju99gacm9a4iq40t.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'ehi-x7ZsTRLpAbvfYAHyqdV4'
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+LOGIN_REDIRECT_URL = '/profile'
+LOGOUT_REDIRECT_URL = '/posts/'
+SOCIAL_AUTH_URL_NAMESPACE='social'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
