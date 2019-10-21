@@ -6,7 +6,7 @@ import datetime
 class Post(models.Model):
     titleText = models.CharField(max_length=200)
     description = models.TextField()
-    creation_date = models.DateField()
+    creation_date = models.TextField()
     postID = models.IntegerField()
     category = models.TextField();
     price = models.DecimalField(max_digits=6, decimal_places=2)
