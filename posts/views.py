@@ -36,7 +36,7 @@ def index(request):
     context = {'postList': postList, 'testArray': testArray}
     
     return render(request, 'posts/index.html', context)
-
+'''
 def newPost(request):
 
     #template_name = 'posts/index.html'
@@ -47,7 +47,7 @@ def newPost(request):
     
     return render(request, 'posts/newPost.html', context)
 
-
+'''
 def newPostTest(request):
 
     post=Post()
@@ -103,3 +103,13 @@ class PostDetailView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Post.objects.filter(creation_date__lte=timezone.now())
+        
+class PostCreate(generic.CreateView):
+    template_name = 'posts/newPost.html'
+    model = Post
+    fields = '__all__'
+
+    def form_valid(self, form):
+        model = form.save(commit=False)
+        model.save()
+        return HttpResponseRedirect('posts/')
