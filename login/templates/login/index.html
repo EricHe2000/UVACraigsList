@@ -8,6 +8,6 @@
 	{% include "header.html" %}
 	
     <body>
-        <a href="{% provider_login_url "google" %}">Google Connect</a>
+        <a href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
     </body>
 </html>
