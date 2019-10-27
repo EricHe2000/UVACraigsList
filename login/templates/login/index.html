@@ -1,40 +1,46 @@
 {% load socialaccount %}
 {% providers_media_js %}
-    <head>
-        <title>Google Registration</title>
-    </head>
-	
-	{% include "header.html" %}
-	
-    <body>
-        <a href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
-    </body>
-<html>
-<head>
-  <meta name="google-signin-client_id" content="714357334748-notv23mo6i6idb0bq1tjpo77v4o00gfn.apps.googleusercontent.com">
-</head>
-<body>
-  <div id="my-signin2"></div>
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
 
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-</body>
-</html>
+	{% include "header.html" %}
+    {% include "footer.html" %}
+    <html>
+            <html lang="en">
+                    <body>
+                
+                        <!-- Main navigation -->
+                        <header>
+                          <!-- Full Page Intro -->
+                          <div class="view" style="background-image: url('https://cdn.kastatic.org/ka-perseus-images/83702652174b705b446693f120de2d895c36fc8a.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                            <!-- Mask & flexbox options-->
+                            <div class="mask rgba-gradient align-items-center">
+                              <!-- Content -->
+                              <div class="container">
+                                <!--Grid row-->
+                                <div class="row">
+                                  <!--Grid column-->
+                                  <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                                    <h1 class="h1-responsive font-weight-bold text-danger">UVA Listings</h1>
+                                    <hr class="hr-light">
+                                    <h6 class="text-danger">The one stop buy-and-sell marketplace, exclusively for UVA students. 
+                                            Sell your old artifacts to make some easy money or simply browse what other UVA students are willing to sell!</h6>
+                                        <body>
+                                            <a href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
+                                        </body>
+                                  </div>
+
+                                  <!--Grid column-->
+                                </div>
+                                <!--Grid row-->
+                              </div>
+                              <!-- Content -->
+                            </div>
+                            <!-- Mask & flexbox options-->
+                          </div>
+                          <!-- Full Page Intro -->
+                        </header>
+                        <!-- Main navigation -->
+                    </body>
+                </html>
+
+    </html>
+
