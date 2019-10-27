@@ -5,5 +5,4 @@ bootstrap4
 django-allauth
 pillow
 social-auth-app-django
-social-auth-core
 oauthlib
