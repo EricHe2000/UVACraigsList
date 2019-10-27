@@ -10,7 +10,7 @@ from django.conf import settings
 
 app_name = 'login'
 urlpatterns= [
-	path('', TemplateView.as_view(template_name='login/profile.html')),
+	path('', TemplateView.as_view(template_name='posts/index.html')),
 	path('logout', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},name='logout'),
 	
 
