@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -6,6 +6,7 @@ from django.views import generic
 from .models import Post
 from django.http import HttpResponse
 from django.utils import timezone
+
 
 #Citations
 # http://www.learningaboutelectronics.com/Articles/How-to-insert-data-into-a-database-from-an-HTML-form-in-Django.php
@@ -112,4 +113,4 @@ class PostCreate(generic.CreateView):
     def form_valid(self, form):
         model = form.save(commit=False)
         model.save()
-        return HttpResponseRedirect('posts/')
+        return redirect('/posts')

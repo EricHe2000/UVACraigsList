@@ -158,7 +158,7 @@ LOGOUT_REDIRECT_URL = '/posts/'
 SOCIAL_AUTH_URL_NAMESPACE='social'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+django_heroku.settings(locals(), test_runner=False)
 
 SITE_ID = 1
 
