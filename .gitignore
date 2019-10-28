@@ -103,8 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 login/__pycache__/
-login/migrations/
-posts/migrations/
 mysite/__pycache__/
 posts/__pycache__/git 
 login/adapter.py
