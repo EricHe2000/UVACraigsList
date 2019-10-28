@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('postID', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('titleText', models.CharField(max_length=200)),
                 ('description', models.TextField()),
                 ('creation_date', models.DateField()),

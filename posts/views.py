@@ -112,6 +112,7 @@ class PostCreate(generic.CreateView):
     fields = '__all__'
 
     def form_valid(self, form):
-        model = form.save(commit=False)
+
+        model = form.save()
         model.save()
         return redirect('/posts')
