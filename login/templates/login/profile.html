@@ -52,13 +52,11 @@
     crossorigin="anonymous">
 </head>
 <body>
-  <div class="jumbotron">
     {% if user.is_authenticated %}
       <p>Logged as {{ user.username }}</p>
       <a class="btn btn-primary" href="{% url 'login:logout' %}">Logout</a>
     {% else %}
     {% include "index11.html" %}
     {% endif %}
-  </div>
   </body>
   </html>
