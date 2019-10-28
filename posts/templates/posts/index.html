@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block page %}
 {% load socialaccount %}
 {% providers_media_js %}
 <!--
@@ -87,7 +89,7 @@ Bootstrap Header
 	{% endif %}
 
 </body>
-
+{% endblock %}
 
 
 <!-- Example of accessing elements within an array that is passed by a dictionary

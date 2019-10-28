@@ -45,8 +45,6 @@
 <head>
   <meta charset="utf-8">
 
-  <title>My fake blog!</title>
-
   <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -55,14 +53,11 @@
 </head>
 <body>
   <div class="jumbotron">
-    <h1>My fake blog!</h1>
     {% if user.is_authenticated %}
       <p>Logged as {{ user.username }}</p>
       <a class="btn btn-primary" href="{% url 'login:logout' %}">Logout</a>
     {% else %}
-      <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
-        Login
-      </a>
+    {% include "index11.html" %}
     {% endif %}
   </div>
   </body>

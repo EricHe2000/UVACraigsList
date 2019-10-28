@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
+
 # def profile(request, pk=None):
 #     if pk:
 #         user = User.objects.get(pk=pk)
@@ -20,6 +21,7 @@ def index(request):
 	}
 
 	return render(request, 'login/profile.html', context)
+
 
 def logout_view(request):
     logout(request)
