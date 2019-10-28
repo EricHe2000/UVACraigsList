@@ -107,7 +107,7 @@ class PostDetailView(generic.DetailView):
         return Post.objects.filter(creation_date__lte=timezone.now())
         
 class PostCreate(generic.CreateView):
-    template_name = 'posts/newPost.html'
+    template_name = 'posts/newpost.html'
     model = Post
     fields = '__all__'
 
