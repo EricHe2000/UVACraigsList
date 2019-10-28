@@ -107,3 +107,4 @@ login/migrations/
 posts/migrations/
 mysite/__pycache__/
 posts/__pycache__/git 
+login/adapter.py

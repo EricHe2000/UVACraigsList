@@ -55,8 +55,8 @@ def newPostTest(request):
     post.titleText = "test"
     post.description = "test"
     post.creation_date = "2006-10-25"
-    postID = 5
-    category="test"
+    post.postID = 5
+    post.category="test"
     post.save()
 
     if request.method == 'POST':
