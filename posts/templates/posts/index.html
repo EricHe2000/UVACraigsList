@@ -1,5 +1,5 @@
-<!-- {% extends "base.html" %}
-{% block page %} -->
+{% extends "base.html" %}
+{% block page %} 
 {% load socialaccount %}
 {% providers_media_js %}
 <!--
@@ -58,7 +58,7 @@ Bootstrap Header
 -->
  
 {% include "header.html" %}
- 
+{% include "footer.html" %}
 <body>
 
 	<button type="submit" onclick="location.href = 'newPost';">New Post</button>
@@ -89,7 +89,7 @@ Bootstrap Header
 	{% endif %}
 
 </body>
-<!-- {% endblock %} -->
+{% endblock %} 
 
 
 <!-- Example of accessing elements within an array that is passed by a dictionary
