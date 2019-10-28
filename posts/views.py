@@ -54,17 +54,18 @@ def newPostTest(request):
     post=Post()
     post.titleText = "test"
     post.description = "test"
-    post.creation_date = '2006-10-25'
+    post.creation_date = "2006-10-25"
     postID = 5
     category="test"
     post.save()
 
     if request.method == 'POST':
-       
-        
         post=Post()
-        post.titleText = request.POST['titleText']
-        post.description= request.POST['description']
+        post.titleText=request.POST['titleText']
+        post.description=request.POST['description']
+        post.creation_date=request.POST['creation_date']
+        post.postID=request.POST['postID']
+        post.category=request.POST['category']
         post.save()
         
         '''
