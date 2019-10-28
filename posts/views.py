@@ -31,11 +31,9 @@ class IndexView(generic.ListView):
 def index(request):
 
     #template_name = 'posts/index.html'
-    postList = Post.objects.order_by('-creation_date')[:3]
+"""     postList = Post.objects.order_by('-creation_date')[:3]
     testArray = {1, 2, 3} 
- 
-    context = {'postList': postList, 'testArray': testArray}
-    
+    context = {'postList': postList, 'testArray': testArray} """
     return render(request, 'posts/index.html', context)
 '''
 def newPost(request):
