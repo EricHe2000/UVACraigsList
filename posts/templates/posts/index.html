@@ -61,7 +61,7 @@ Bootstrap Header
 {% include "footer.html" %}
 <body>
 
-	<button type="submit" onclick="location.href = 'newpost';">New Post</button>
+	<button class="btn btn-primary" type="submit" onclick="location.href = 'newpost';">New Post</button>
 	<!-- <button type="submit" onclick='posts/newPost/'>New Post</button> -->
 	
 
@@ -78,7 +78,8 @@ Bootstrap Header
 			As a side note the generic inline element in HTML is the <span> element. 
 			The span element is not shown here.
 			-->
-			<div><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a></div>
+			<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a>
+				<a>${{ postVar.price }}</a></div>
 			
 		{% endfor %}
 
