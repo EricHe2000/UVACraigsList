@@ -1,12 +1,15 @@
 {% include "header.html" %}
-{% include "footer.html" %}
+
 
 <head>
 
 <head>
 <body>
 
-	<div>Create a Post </div>
+	<center><h1>Create a Post</h1></center>
+	
+	<br/>
+	<br/>
 	
 	<form action="" method="POST">
 	
@@ -22,14 +25,14 @@
 		<br/>
 		<input type="submit" value="Submit"/> -->
 		
-		<center style = "margin-top: 100px">
-		
-			<form action="" method="post">
+			
+			<div style="width: 600px; text-align: left;">
+			<form action="/" method="post">
 				{% csrf_token %}
 				{{form}} 
 			<input type="submit" value="Submit" />
 			</form>
-		</center>
+			</div>
 		
 		
 	</form>
