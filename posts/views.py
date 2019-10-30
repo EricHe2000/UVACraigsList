@@ -31,7 +31,7 @@ class IndexView(generic.ListView):
 def index(request):
     
     template_name = 'posts/postIndex.html'
-    postList = Post.objects.order_by('-creation_date')[:5]
+    postList = Post.objects.order_by('-creation_date')[:8]
     testArray = {1, 2, 3} 
     context = {'postList': postList, 'testArray': testArray} 
     return render(request, 'posts/postIndex.html',context)  
