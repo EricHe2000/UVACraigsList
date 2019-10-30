@@ -35,7 +35,11 @@ def index(request):
     testArray = {1, 2, 3} 
     context = {'postList': postList, 'testArray': testArray} 
     return render(request, 'posts/postIndex.html',context)  
+
+def detail(request, post_id):
+    return HttpResponse("You're looking at question %s." % post_id)
 '''
+
 def newPost(request):
 
     #template_name = 'posts/index.html'
@@ -99,9 +103,6 @@ class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'posts/detail.html'
     def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
         return Post.objects.filter(creation_date__lte=timezone.now())
         
 class PostCreate(generic.CreateView):

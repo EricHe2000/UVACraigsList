@@ -64,22 +64,11 @@ Bootstrap Header
 	<!-- <button type="submit" onclick='posts/newPost/'>New Post</button> -->
 	
 	{%if user.is_authenticated%}
-
 		{% if postList %}
-
-			<!--
-			The variable forloop.counter returns the current iteration number
-			-->
 			{% for postVar in postList %}
-
-				<!--
-				The element <div> is a generic block element in HTML.
-				Don't use the <p> element unless you're literally using it for a paragraph.
-				As a side note the generic inline element in HTML is the <span> element. 
-				The span element is not shown here.
-				-->
-				<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a>
-					<a>${{ postVar.price }}</a></div>
+			
+				<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ postVar.id }}/">{{ postVar.titleText }}</a>
+					</div>
 				
 			{% endfor %}
 
