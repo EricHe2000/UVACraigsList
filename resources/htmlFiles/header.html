@@ -36,14 +36,17 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="#">Category<span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/profile/">Google Connect</a>
-					</li>
-					
+
 
 					<li class="nav-item">
-						<a class="nav-link" href="post/newpost">New Post</a>
+						<a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
 					</li>
+					
+					{%if user.is_authenticated%}
+						<li class="nav-item">
+							<a class="nav-link" href="posts/newpost">New Post</a>
+						</li>
+					{%endif%}
 					
 				</ul>
 				

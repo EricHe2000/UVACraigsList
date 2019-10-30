@@ -63,31 +63,38 @@ Bootstrap Header
 	<button class="btn btn-primary" type="submit" onclick="location.href = 'newpost';">New Post</button>
 	<!-- <button type="submit" onclick='posts/newPost/'>New Post</button> -->
 	
+	{%if user.is_authenticated%}
 
-	{% if postList %}
-
-		<!--
-		The variable forloop.counter returns the current iteration number
-		-->
-		{% for postVar in postList %}
+		{% if postList %}
 
 			<!--
-			The element <div> is a generic block element in HTML.
-			Don't use the <p> element unless you're literally using it for a paragraph.
-			As a side note the generic inline element in HTML is the <span> element. 
-			The span element is not shown here.
+			The variable forloop.counter returns the current iteration number
 			-->
-			<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a>
-				<a>${{ postVar.price }}</a></div>
+			{% for postVar in postList %}
+
+				<!--
+				The element <div> is a generic block element in HTML.
+				Don't use the <p> element unless you're literally using it for a paragraph.
+				As a side note the generic inline element in HTML is the <span> element. 
+				The span element is not shown here.
+				-->
+				<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ forloop.counter }}/">{{ postVar.titleText }}</a>
+					<a>${{ postVar.price }}</a></div>
+				
+			{% endfor %}
+
+		{% else %} 
+
+			<p>No posts are available.</p>
 			
-		{% endfor %}
+		{% endif %}
+	{%else%}
+		<p> You need to be logged in in order to make a post!</p>
+		<a class="btn btn-primary" href="\">Back to Homepage</a>
+ 		<li class="nav-item">
+ 		<a href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
 
-	{% else %} 
-
-		<p>No posts are available.</p>
-		
-	{% endif %}
-
+ 		{%endif%}
 </body>
 {% endblock %} 
 

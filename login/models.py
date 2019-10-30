@@ -10,11 +10,7 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete= models.DO_NOTHING)
-    #description = models.CharField(max_length=100, default='')
-    address = models.CharField(max_length=100, default='')
-    phone = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='profile_image', blank=True)
-    email = models.CharField(max_length=100, default='')
+
    
     def __str__(self):
         return self.user.username

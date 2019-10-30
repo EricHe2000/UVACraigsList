@@ -24,8 +24,8 @@
 		</textarea>
 		<br/>
 		<input type="submit" value="Submit"/> -->
-		
-			
+		{%if user.is_authenticated%}
+			<p> You are logged in as {{user.username}}</p>
 			<div style="width: 600px; text-align: center;">
 			<form action="/" method="post">
 				{% csrf_token %}
@@ -33,6 +33,10 @@
 			<input type="submit" value="Submit" />
 			</form>
 			</div>
+		{%else%}
+			<p> You need to be logged in in order to make a post! </p>
+		{%endif%}
+
 		
 		
 	</form>
