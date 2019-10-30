@@ -1,44 +1,7 @@
 
 
-<!-- 
-{% block head %}
-<title>Profile</title>
-{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1>Profile</h1>
-    <h3>We have some Data but will need you to fill in some more!</h3>
-    <p>Username: {{ user }}</p>
-    <p>First name: {{ user.first_name }}</p>
-    <p>Last name: {{ user.last_name }}</p>
 
-    <form action="/your-name/" method="post">
-    <label for="your_ID">Computing ID: </label>
-    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-    <input type="submit" value="OK">
-	</form>
-
-	 <form action="/your-email/" method="post">
-    <label for="email">UVA Email: </label>
-    <input id="Email" type="email" name="Email" value="{{ user.email }}">
-    <input type="submit" value="OK">
-	</form>
-
-	<form action="/your-phone/" method="post">
-    <label for="Phone">Phone Number: </label>
-    <input id="Email" type="number" name="Phone" value="{{ user.phone }}">
-    <input type="submit" value="OK">
-	</form>
-
-	<form action="/your-address/" method="post">
-    <label for="Phone">UVA Address: </label>
-    <input id="Address" type="text" name="address" value="{{ user.address }}">
-    <input type="submit" value="OK">
-</div>
-
-	
-{% endblock %} -->
 
 <!doctype html>
 <html lang="en">
@@ -46,17 +9,27 @@
   <meta charset="utf-8">
 
   <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-    crossorigin="anonymous">
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+  integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+  crossorigin="anonymous">
 </head>
 <body>
     {% if user.is_authenticated %}
-      <p>Logged as {{ user.username }}</p>
-      <a class="btn btn-primary" href="{% url 'login:logout' %}">Logout</a>
+    <p>Logged as {{ user.username }}</p>
+    <p> First Name is: {{user.first_name}}</p>
+    <p> Last Name is: {{user.last_name}}</p>
+    <p> User email is {{user.email}}</p>
+
+    <a class="btn btn-primary" href="logout">Logout</a>
     {% else %}
     {% include "index11.html" %}
     {% endif %}
-  </body>
-  </html>
+
+    <a class="btn btn-primary" href="\">Back to Homepage</a>
+    <li class="nav-item">
+        <a class="nav-link" href="posts/">Submit a Post</a>
+    </li>
+
+</body>
+</html>
