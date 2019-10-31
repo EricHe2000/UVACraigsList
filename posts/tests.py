@@ -31,4 +31,78 @@ class PostModelTests(TestCase):
 
 '''
 
+class PostTestCase(TestCase):
+    def setUp(self):
+    
+        Post.objects.create(titleText="testCase", 
+                            description="testCase", 
+                            creation_date="2019-10-31",
+                            category="testCase",
+                            price=2.00)
+        
+    def test_post_created(self):
+            
+        #Checks if post can be created and added to the database
+        
+        testCaseObject = Post.objects.get(titleText="testCase")
+            
+        self.assertEqual(testCaseObject.titleText,"testCase")
+        
+    def test_unique_ID(self):
+    
+        #Checks if each post has its own unique ID
+        totalPostsInDatabase = 5
+    
+        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
+        
+        postIDRepeatBool = 0
+        
+        for count1 in postList:
+            for count2 in postList:
+                if (count1.id == count2.id):
+                    postIDRepeatBool = 1
+        
+        self.assertEqual(postIDRepeatBool, 1)
+        
+    def test_no_negative_prices(self):
+    
+        postPriceNegativeBool = 0
+    
+        totalPostsInDatabase = 5
+    
+        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
+        
+        for count1 in postList:
+            if(count1.price <= 0):
+                postPriceNegativeBool = 1
+                            
+        self.assertEqual(postPriceNegativeBool, 0);
+        
+    def test_no_blank_titleText(self):
+    
+        totalPostsInDatabase = 5
+        
+        postTitleTextBlankBool = 0
+        
+        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
+        
+        for count1 in postList:
+            if(count1.titleText == ""):
+                postTitleTextBlankBool = 1
+                
+        self.assertEqual(postTitleTextBlankBool, 0);
+        
+    def test_no_blank_description(self):
+    
+        totalPostsInDatabase = 5
+        
+        postDescriptionBlankBool = 0
+        
+        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
+        
+        for count1 in postList:
+            if(count1.description == ""):
+                postDescriptionBlankBool = 1
+                
+        self.assertEqual(postDescriptionBlankBool, 0);
         
