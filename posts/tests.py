@@ -51,7 +51,7 @@ class PostTestCase(TestCase):
     def test_unique_ID(self):
     
         #Checks if each post has its own unique ID
-        totalPostsInDatabase = 5
+        totalPostsInDatabase = 5 
     
         postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
         
