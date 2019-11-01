@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -162,11 +163,16 @@ LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE='social'
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
 # Activate Django-Heroku.
 
-if '/app' in os.environ['HOME']:
+""" if '/app' in os.environ['HOME']:
+    import django_heroku
+    django_heroku.settings(locals()) """
+if 'I_AM_HEROKU' in os.environ:
+    # Configure Django App for Heroku.
     import django_heroku
     django_heroku.settings(locals())
-
 SITE_ID = 1
 

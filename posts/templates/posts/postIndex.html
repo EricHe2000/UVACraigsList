@@ -1,6 +1,10 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 {% block page %} 
 {% load socialaccount %}
 {% providers_media_js %}
+
 <!--
 UVA Craigslist
 Main Page
@@ -66,10 +70,15 @@ Bootstrap Header
 	{%if user.is_authenticated%}
 		{% if postList %}
 			{% for postVar in postList %}
-			
-				<div style = "text-align: center; font-size: 30px"><a href="/posts/{{ postVar.id }}/">{{ postVar.titleText }}</a>
+
+					  <div class="col-md-10 blogShort">
+						<h1>{{ postVar.titleText }}</h1>
+						<article><p>
+							<h2>{{ postVar.description }}</h2>
+							</p></article>
+						<h1></h1><a class="btn btn-blog pull-right marginBottom10" href="/posts/{{ postVar.id }}/">Go to Post</a> 
 					</div>
-				
+					
 			{% endfor %}
 
 		{% else %} 
