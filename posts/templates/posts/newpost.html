@@ -10,7 +10,7 @@
 	
 	<br/>
 	<br/>
-	
+
 	<form action="" method="POST">
 	
 		{% csrf_token %}
@@ -27,14 +27,19 @@
 		<br/>
 		<input type="submit" value="Submit"/> -->
 		{%if user.is_authenticated%}
-			<p> You are logged in as {{user.username}}</p>
-			<div style="width: 600px; text-align: center;">
-			<form action="/" method="post">
-				{% csrf_token %}
-				{{ form|crispy }}
-			<input type="submit" value="Submit" />
-			</form>
-			</div>
+			
+			<center>
+				<p> You are logged in as {{user.username}}</p>
+				<form action="/" method="post">
+					{% csrf_token %}
+
+					<table>{{ form.as_table }}</table>
+
+				<input type="submit" value="Submit" />
+				</form>
+			</center>
+<!-- Default form contact -->
+
 		{%else%}
 			<p> You need to be logged in in order to make a post! </p>
 		{%endif%}

@@ -6,6 +6,7 @@ from django.views import generic
 from .models import Post
 from django.http import HttpResponse
 from django.utils import timezone
+from .forms import PostForm , AddressForm
 
 
 #Citations
@@ -13,44 +14,37 @@ from django.utils import timezone
 
 
 # Create your views here.
-'''
-def index(request):
-    posts_list = Post.objects.order_by('-creation_date')[:5]
-    output = ', '.join([t.titleText for t in posts_list])
-    return HttpResponse(output)
-'''
-'''
-class IndexView(generic.ListView):
-    template_name = 'posts/index.html'
-    context_object_name = 'post_list'
-    def get_queryset(self):
-        #This returns the most recent posts
-        
-        return Post.objects.order_by('-creation_date')[:3]
-'''
-def index(request):
+
+def postIndex(request):
     
     template_name = 'posts/postIndex.html'
     postList = Post.objects.order_by('-creation_date')[:8]
-    testArray = {1, 2, 3} 
-    context = {'postList': postList, 'testArray': testArray} 
+    context = {'postList': postList} 
     return render(request, 'posts/postIndex.html',context)  
+
+def addPost(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = PostForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            data = request.POST.copy()
+            post = Post(titleText = data.get('titleText'), description=data.get('description'), creation_date = data.get('creation_date'), category = data.get('category'), price = data.get('price'))
+            post.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect('/posts')
+
+        # if a GET (or any other method) we'll create a blank form
+    else:
+        form = PostForm()
+
+    return render(request, 'posts/newpost.html', {'form': form})
+
 
 def detail(request, post_id):
     return HttpResponse("You're looking at question %s." % post_id)
-'''
 
-def newPost(request):
-
-    #template_name = 'posts/index.html'
-    postList = Post.objects.order_by('-creation_date')[:3]
-    testArray = {1, 2, 3} 
- 
-    context = {'postList': postList, 'testArray': testArray}
-    
-    return render(request, 'posts/newPost.html', context)
-
-'''
 def newPostTest(request):
 
     post=Post()
@@ -105,13 +99,3 @@ class PostDetailView(generic.DetailView):
     def get_queryset(self):
         return Post.objects.filter(creation_date__lte=timezone.now())
         
-class PostCreate(generic.CreateView):
-    template_name = 'posts/newpost.html'
-    model = Post
-    fields = '__all__'
-
-    def form_valid(self, form):
-
-        model = form.save()
-        model.save()
-        return redirect('/posts')
