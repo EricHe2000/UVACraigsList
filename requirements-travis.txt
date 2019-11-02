@@ -6,3 +6,4 @@ django-allauth
 pillow
 social-auth-app-django
 oauthlib
+crispy_forms
