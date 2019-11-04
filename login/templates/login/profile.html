@@ -1,30 +1,22 @@
-
-
-
-
+ {% include "header.html" %} {% include "footer.html" %}
 
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
 
-  <link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-  integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-  crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+
 <body>
     {% if user.is_authenticated %}
     <p>Logged as {{ user.username }}</p>
     <p> First Name is: {{user.first_name}}</p>
     <p> Last Name is: {{user.last_name}}</p>
-    <p> User email is {{user.email}}</p>
+    <p> User email is: {{user.email}}</p>
 
-    <a class="btn btn-primary" href="logout">Logout</a>
-    {% else %}
-    {% include "index11.html" %}
-    {% endif %}
+    <a class="btn btn-primary" href="logout">Logout</a> {% else %} {% include "index11.html" %} {% endif %}
 
     <a class="btn btn-primary" href="\">Back to Homepage</a>
     <li class="nav-item">
@@ -32,4 +24,5 @@
     </li>
 
 </body>
+
 </html>
