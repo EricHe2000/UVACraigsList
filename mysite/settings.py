@@ -165,6 +165,10 @@ SOCIAL_AUTH_URL_NAMESPACE='social'
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
+#Upload media stuff
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/')
+
+
 # Activate Django-Heroku.
 
 """ if '/app' in os.environ['HOME']:

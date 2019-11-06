@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+import uuid
 from django.contrib.auth.models import User
 
 Default_id=1
@@ -40,4 +41,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titleText
+
+class Photo(models.Model):
+    uuid = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False,
+    )
+    created_at = models.DateTimeField(auto_now_add=True) 
+    title = models.CharField(max_length=100)
+    photo = models.FileField()
     
