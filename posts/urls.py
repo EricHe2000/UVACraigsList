@@ -9,5 +9,6 @@ urlpatterns = [
     path('newpost', views.addPost, name='newpost'),
     path('<int:pk>/', views.PostDetailView.as_view(), name='detail'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('posts', views.postIndex, name='posts'),
     
 ]
