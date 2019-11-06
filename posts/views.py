@@ -7,6 +7,7 @@ from .models import Post
 from django.http import HttpResponse
 from django.utils import timezone
 from .forms import PostForm , AddressForm
+import operator
 
 
 #Citations
@@ -99,3 +100,9 @@ class PostDetailView(generic.DetailView):
     def get_queryset(self):
         return Post.objects.filter(creation_date__lte=timezone.now())
         
+
+
+
+class SearchResultsView(generic.ListView):
+    model = Post
+    template_name = 'search_results.html'

@@ -2,10 +2,12 @@ from django.urls import path
 from django.conf.urls import url
 
 from . import views
-
+from .views import SearchResultsView
 app_name = 'posts'
 urlpatterns = [
     path('', views.postIndex, name='posts'),
     path('newpost', views.addPost, name='newpost'),
     path('<int:pk>/', views.PostDetailView.as_view(), name='detail'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
+    
 ]
