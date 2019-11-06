@@ -12,12 +12,23 @@ class Post(models.Model):
     Electronics = 'Electronics'
     Services = 'Services'
     Miscellaneous = 'Misc'
+    Housing = 'Housing'
+    Food = 'Food'
+    Community = 'Community'
+    Textbooks = 'Textbooks'
+    Tutoring = 'Tutoring'
+    Clothes = 'Clothes'
     CategoryChoices = [
         (Electronics, 'Electronics'),
         (Services, 'Services'),
         (Miscellaneous, 'Miscellaneous'),
+        (Housing, 'Housing'),
+        (Food, 'Food'),
+        (Community, 'Community'),
+        (Textbooks, 'Textbooks'),
+        (Tutoring, 'Tutoring'),
+        (Clothes, 'Clothes'),
     ]
-    
     category = models.CharField(max_length=200, choices=CategoryChoices, default=Miscellaneous)
     
     price = models.DecimalField(max_digits=6, decimal_places=2)
