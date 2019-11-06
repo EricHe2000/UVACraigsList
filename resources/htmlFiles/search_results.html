@@ -3,7 +3,7 @@
 <ul>
   {% for post in object_list %}
     <li>
-      {{ post.creation_date}}, {{ post.category }}
+      {{ post.titleText}}, {{ post.category }}, {{ post.description }}
     </li>
   {% endfor %}
 </ul>

@@ -9,6 +9,8 @@ from django.utils import timezone
 from .forms import PostForm , AddressForm
 import operator
 
+from django.db.models import Q
+
 
 #Citations
 # http://www.learningaboutelectronics.com/Articles/How-to-insert-data-into-a-database-from-an-HTML-form-in-Django.php
@@ -106,3 +108,10 @@ class PostDetailView(generic.DetailView):
 class SearchResultsView(generic.ListView):
     model = Post
     template_name = 'search_results.html'
+
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        object_list = Post.objects.filter(
+            Q(titleText__icontains=query) | Q(category__icontains=query)
+        )
+        return object_list
