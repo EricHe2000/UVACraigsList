@@ -41,15 +41,16 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
 				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" onclick="location.href = 'posts';">View Posts</a>
+				</li>
 
 				{%if user.is_authenticated%}
 
 
 				<li class="nav-item">
 					<a class="nav-link" onclick="location.href = 'newpost';">New Post</a>
-
-
-					<!-- <a class="nav-link" href=var>New Post</a> -->
 				</li>
 
 				{%endif%}

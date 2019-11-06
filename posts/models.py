@@ -25,7 +25,7 @@ class Post(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     #https://djangopackages.org/packages/p/django-location-field/
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    User = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
 
     def __str__(self):
         return self.titleText

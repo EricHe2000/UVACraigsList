@@ -8,7 +8,6 @@ import datetime
 class PostForm(forms.Form):
     titleText = forms.CharField(max_length=200)
     description = forms.CharField(max_length=200)
-    creation_date = forms.DateTimeField()
     category = forms.CharField(max_length=200)
     price = forms.DecimalField(max_digits=6, decimal_places=2)
 
