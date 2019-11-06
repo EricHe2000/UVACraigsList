@@ -9,7 +9,18 @@ class PostForm(forms.Form):
     titleText = forms.CharField(max_length=200)
     description = forms.CharField(max_length=200)
     creation_date = forms.DateTimeField()
-    category = forms.CharField(max_length=200)
+    Electronics = 'Electronics'
+    Services = 'Services'
+    Miscellaneous = 'Misc'
+    CategoryChoices = [
+        (Electronics, 'Electronics'),
+        (Services, 'Services'),
+        (Miscellaneous, 'Miscellaneous'),
+    ]
+    category = forms.ChoiceField(choices=[
+        (Electronics, 'Electronics'),
+        (Services, 'Services'),
+        (Miscellaneous, 'Miscellaneous')])
     price = forms.DecimalField(max_digits=6, decimal_places=2)
 
 
