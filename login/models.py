@@ -30,7 +30,3 @@ class UserProfile(models.Model):
 #         UserProfile.object.create(user=instance)
 #     instance.UserProfile.save()
 #pre_save.connect(update_username_from_email, sender=User,dispatch_uid="update_username_from_email")
-		
-
-
-# def update_user_profile():
