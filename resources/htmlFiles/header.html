@@ -43,12 +43,18 @@
 				</li>
 
 				{%if user.is_authenticated%}
+
+
 				<li class="nav-item">
-					<a class="nav-link" href="posts/newpost">New Post</a>
+					<a class="nav-link" onclick="location.href = 'newpost';">New Post</a>
+
+
+					<!-- <a class="nav-link" href=var>New Post</a> -->
 				</li>
+
 				{%endif%}
 
-				<!-- Search bar attempt -->
+				<!-- Search bar -->
 				<li class ="nav item">
 					<form id="searchform" action="/search" method="get" accept-charset="utf-8">
 						<button class="searchbutton" type="submit">
