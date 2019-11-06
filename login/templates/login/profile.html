@@ -1,4 +1,4 @@
- {% include "header.html" %} {% include "footer.html" %}
+ {% include "header.html" %} 
 
 <!doctype html>
 <html lang="en">
@@ -10,7 +10,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   {% if user.is_authenticated %}
   <p>Logged as {{ user.username }}</p>
   <p> First Name is: {{user.first_name}}</p>
@@ -23,32 +22,11 @@
   {% endif %}
 
   <a class="btn btn-primary" href="\">Back to Homepage</a>
-  <li class="nav-item">
-  </li>
 
-  <a class="btn btn-primary" href="\">Click here if you want to updaye your profile!</a>
-  <li class="nav-item">
+ <!-- class="nav-link" onclick="location.href = 'newpost';" -->
 
+  <a class="btn btn-primary" onclick="location.href = 'profileupdate';">Click here if you want to update your profile!</a>
 
-  </li>
 
   </body>
   </html>
-=======
-    {% if user.is_authenticated %}
-    <p>Logged as {{ user.username }}</p>
-    <p> First Name is: {{user.first_name}}</p>
-    <p> Last Name is: {{user.last_name}}</p>
-    <p> User email is: {{user.email}}</p>
-
-    <a class="btn btn-primary" href="logout">Logout</a> {% else %} {% include "index11.html" %} {% endif %}
-
-    <a class="btn btn-primary" href="\">Back to Homepage</a>
-    <li class="nav-item">
-        <a class="nav-link" href="posts/">Submit a Post</a>
-    </li>
-
-</body>
-
-</html>
->>>>>>> e18a545a688ba01870b63df7894fe463f3a766b9
