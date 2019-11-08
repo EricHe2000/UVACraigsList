@@ -165,6 +165,18 @@ SOCIAL_AUTH_URL_NAMESPACE='social'
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
+#Upload media stuff
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/')
+AWS_ACCESS_KEY_ID = 'AKIASHXIHBZ7DBUV2PVR'
+AWS_SECRET_ACCESS_KEY = '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' 
+DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'project103renamelater'
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_DEFAULT_ACL=None
+# AKIASHXIHBZ7DBUV2PVR
+# secret 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
+
+
 # Activate Django-Heroku.
 
 """ if '/app' in os.environ['HOME']:
