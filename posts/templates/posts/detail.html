@@ -6,6 +6,8 @@
       <p class="card-text">{{ post.description }}</p>
       <p class="card-text">Category: {{ post.category }}</p>
       <p class="card-text">Price: {{ post.price }}</p>
+      <p class="card-text">Date: {{ post.date }}</p>
+      <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
       <a href="/posts" class="btn btn-primary">Go Back</a>
     </div>
   </div>

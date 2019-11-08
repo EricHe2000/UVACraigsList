@@ -38,19 +38,35 @@
                 </li>
 
 
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Login</a>
                 </li>
+=======
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" onclick="location.href = 'posts';">View Posts</a>
+				</li>
+>>>>>>> ff5b9be86910b88008c4ebd54b21c384590ea113
 
                 {%if user.is_authenticated%}
 
 
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" onclick="location.href = 'newpost';">New Post</a>
 
 
                     <!-- <a class="nav-link" href=var>New Post</a> -->
                 </li>
+=======
+				<li class="nav-item">
+					<a class="nav-link" onclick="location.href = 'newpost';">New Post</a>
+				</li>
+>>>>>>> ff5b9be86910b88008c4ebd54b21c384590ea113
 
                 {%endif%}
 
