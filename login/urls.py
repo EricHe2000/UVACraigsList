@@ -12,7 +12,10 @@ app_name = 'login'
 
 urlpatterns= [
 	path('', TemplateView.as_view(template_name='login/profile.html')),
+	path('profileupdate', views.update_profile, name='profileupdate'),
+	url(r'^profile/$', views.view_profile, name='view_profile'),
 	path('logout', views.logout_view),
 	path('posts/',include('posts.urls')),
 	path('posts/newpost/',include('posts.urls')),
+	
     ]

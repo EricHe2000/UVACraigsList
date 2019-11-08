@@ -19,3 +19,4 @@ class UserProfile(models.Model):
     @receiver(pre_save, sender=User)
     def update_username_from_email(sender, instance, **kwargs):
         instance.user = instance.email
+
