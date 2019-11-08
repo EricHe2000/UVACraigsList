@@ -105,3 +105,4 @@ login/__pycache__/
 mysite/__pycache__/
 posts/__pycache__/
 login/adapter.py
+db.sqlite3
