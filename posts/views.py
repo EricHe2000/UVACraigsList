@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from .models import Post
+from .models import Post, Photo
 from django.http import HttpResponse
 from django.utils import timezone
 from .forms import PostForm , AddressForm
@@ -33,7 +33,13 @@ def addPost(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             data = request.POST.copy()
-            post = Post(titleText = data.get('titleText'), description=data.get('description'), creation_date = data.get('creation_date'), category = data.get('category'), price = data.get('price'))
+            post = Post(
+                titleText = data.get('titleText'), 
+                description=data.get('description'), 
+                creation_date = data.get('creation_date'), 
+                category = data.get('category'), 
+                price = data.get('price'), 
+                In_Photo = Photo(request.POST.get('photo',None)))
             post.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/posts')
@@ -63,6 +69,7 @@ def newPostTest(request):
         post.description=request.POST['description']
         post.creation_date=request.POST['creation_date']
         post.category=request.POST['category']
+        post.photo=request.POST['In_Photo']
         post.save()
         
         '''
@@ -79,21 +86,7 @@ def newPostTest(request):
     else:
             return render(request,'posts/index.html')
 
-'''
-def Post(request):
-    
-    
-    selected_choice = request.POST['choice']
-    
-    post.Post();
-    
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-'''
+
 class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'posts/detail.html'

@@ -37,7 +37,8 @@ class PostForm(forms.Form):
     # model=Photo
     # fields=['title','photo']
     #Picture_Description=forms.CharField(max_length=200)
-    photo = forms.FileField()
+    photo = forms.FileField(required=False)
+
 
 
 
