@@ -7,6 +7,15 @@ from django.contrib.auth.models import User
 Default_id=1
 
 # Create your models here.
+
+# class Photo(models.Model):
+#     uuid = models.UUIDField(
+#         primary_key=True, default=uuid.uuid4, editable=False,
+#     )
+#     created_at = models.DateTimeField(auto_now_add=True) 
+#     title = models.CharField(max_length=100)
+#     photo = models.FileField()
+
 class Post(models.Model):
     titleText = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
@@ -22,15 +31,15 @@ class Post(models.Model):
     Tutoring = 'Tutoring'
     Clothes = 'Clothes'
     CategoryChoices = [
-        (Electronics, 'Electronics'),
-        (Services, 'Services'),
-        (Miscellaneous, 'Miscellaneous'),
-        (Housing, 'Housing'),
-        (Food, 'Food'),
-        (Community, 'Community'),
-        (Textbooks, 'Textbooks'),
-        (Tutoring, 'Tutoring'),
-        (Clothes, 'Clothes'),
+    (Electronics, 'Electronics'),
+    (Services, 'Services'),
+    (Miscellaneous, 'Miscellaneous'),
+    (Housing, 'Housing'),
+    (Food, 'Food'),
+    (Community, 'Community'),
+    (Textbooks, 'Textbooks'),
+    (Tutoring, 'Tutoring'),
+    (Clothes, 'Clothes'),
     ]
     category = models.CharField(max_length=200, choices=CategoryChoices, default=Miscellaneous)
     
@@ -38,15 +47,19 @@ class Post(models.Model):
     #https://djangopackages.org/packages/p/django-location-field/
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    photo = models.ImageField(default="")
 
     def __str__(self):
         return self.titleText
 
-class Photo(models.Model):
-    uuid = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False,
-    )
-    created_at = models.DateTimeField(auto_now_add=True) 
-    title = models.CharField(max_length=100)
-    photo = models.FileField()
-    
+
+# class Photo(models.Model):
+#     uuid = models.UUIDField(
+#         primary_key=True, default=uuid.uuid4, editable=False,
+#     )
+#     created_at = models.DateTimeField(auto_now_add=True) 
+#     title = models.CharField(max_length=100)
+#     photo = models.FileField()
+

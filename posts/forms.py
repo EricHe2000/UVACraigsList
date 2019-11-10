@@ -5,7 +5,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 import datetime
-from .models import Photo
+#from .models import Photo
 
 class PostForm(forms.Form):
     titleText = forms.CharField(max_length=200)
@@ -48,6 +48,8 @@ STATES = (
     ('SP', 'Sao Paulo'),
     ('RJ', 'Rio de Janeiro')
 )
+
+#class PhotoForm(forms.form)
 
 class AddressForm(forms.Form):
     email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))

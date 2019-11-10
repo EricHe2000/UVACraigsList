@@ -42,11 +42,13 @@
                     <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Login</a>
                 </li>
 
-                {%if user.is_authenticated%}
 
+                {%if user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link" href = '../newpost';>New Post</a>
 
                 <li class="nav-item">
-                    <a class="nav-link" onclick="location.href = 'newpost';">New Post</a>
+                    <a class="nav-link" href = '../posts';>View Posts</a>
 
 
                     <!-- <a class="nav-link" href=var>New Post</a> -->
@@ -57,11 +59,11 @@
                 <!-- Search bar -->
 
                 <li class="nav item">
-                    <form id="searchform" action="/search" method="get" accept-charset="utf-8">
-                        <button class="searchbutton" type="submit">
-							<i class="fa fa-search"></i>
-						</button>
+                    <form id="searchform" action="../search" method="get" accept-charset="utf-8">
                         <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search Bar">
+                        <button class="btn btn-primary" type="submit">Search
+                            <i class="fa fa-search"></i>
+                        </button>
                     </form>
                 </li>
 
