@@ -19,6 +19,7 @@ class UserProfile(models.Model):
     @receiver(pre_save, sender=User)
     def update_username_from_email(sender, instance, **kwargs):
         instance.user = instance.email
+<<<<<<< HEAD
         
 # @receiver(post_save, sender=User)
 # def update_user_profile(sender,instance,created,**kwargs):
@@ -26,3 +27,6 @@ class UserProfile(models.Model):
 #         UserProfile.object.create(user=instance)
 #     instance.UserProfile.save()
 #pre_save.connect(update_username_from_email, sender=User,dispatch_uid="update_username_from_email")
+=======
+
+>>>>>>> 7598df66fc5edccd44b3cfe5650b27e48fcf8f1a
