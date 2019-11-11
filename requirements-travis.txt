@@ -7,3 +7,7 @@ pillow
 social-auth-app-django
 oauthlib
 django-crispy-forms
+boto3
+botocore
+django-storages
+django-s3direct
