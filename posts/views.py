@@ -33,13 +33,16 @@ def addPost(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             data = request.POST.copy()
+            p3 = Photo(photo=data.get('photo'))
+            p3.save()
             post = Post(
                 titleText = data.get('titleText'), 
                 description=data.get('description'), 
                 creation_date = data.get('creation_date'), 
                 category = data.get('category'), 
                 price = data.get('price'), 
-                In_Photo = Photo(request.POST.get('photo',None)))
+                upload = p3,
+                )
             post.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/posts')

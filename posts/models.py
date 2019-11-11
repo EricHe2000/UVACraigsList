@@ -48,7 +48,7 @@ class Post(models.Model):
     #https://djangopackages.org/packages/p/django-location-field/
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
-    In_Photo = models.ForeignKey(Photo, on_delete=models.CASCADE, default=Default_id)
+    upload = models.ForeignKey(Photo, on_delete=models.CASCADE, default=Default_id, uuid=Default_id)
 
 
     def __str__(self):
