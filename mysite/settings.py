@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -166,23 +167,63 @@ SOCIAL_AUTH_URL_NAMESPACE='social'
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
 #Upload media stuff
-MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/')
-AWS_ACCESS_KEY_ID = 'AKIASHXIHBZ7DBUV2PVR'
-AWS_SECRET_ACCESS_KEY = '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' 
+AWS_ACCESS_KEY_ID = 'AKIASHXIHBZ7HFLAHRPK'
+AWS_SECRET_ACCESS_KEY = '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' 
 DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = 'project103renamelater'
+AWS_STORAGE_BUCKET_NAME = 'uvacraigslist'
 AWS_S3_REGION_NAME = 'us-east-1'
-AWS_DEFAULT_ACL=None
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME+'.s3.amazonaws.com' 
 AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+DEFAULT_FILE_STORAGE = 'mysite.storage_backends.PublicMediaStorage'
+AWS_QUERYSTRING_AUTH = False
 
-S3DIRECT_DESTINATIONS = {
-    'primary_destination': {
-        'key': 'uploads/',
-        'allowed': ['image/jpg', 'image/jpeg', 'image/png'],
-    },
+MEDIAFILES_LOCATION = 'media'
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATICFILES_DIRS = (os.path.join(BASE_DIR, STATIC_ROOT),)
+
+
+MEDIA_URL = '/mediafiles/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+STATICFILES_FINDERS = (
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
 }
-# AKIASHXIHBZ7DBUV2PVR
-# secret 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
+
+'''
+copy of my bucket policy
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1573494626081",
+    "Statement": [
+        {
+            "Sid": "Stmt1573494542172",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::uvacraigslist/*"
+        },
+        {
+            "Sid": "Stmt1573494623557",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::154032082558:user/uvaCraigslist_user"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::uvacraigslist/*",
+                "arn:aws:s3:::uvacraigslist//"
+            ]
+        }
+    ]
+}
+
+'''
 
 
 # Activate Django-Heroku.
@@ -195,4 +236,5 @@ if 'I_AM_HEROKU' in os.environ:
     import django_heroku
     django_heroku.settings(locals())
 SITE_ID = 1
+
 

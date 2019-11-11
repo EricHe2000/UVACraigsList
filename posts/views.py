@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from .forms import PostForm 
 import operator
-
+from django.core.files.storage import FileSystemStorage
 from django.db.models import Q
 
 
@@ -118,13 +118,21 @@ End of category indexes
 def addPost(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
         # check whether it's valid:
-        if form.is_valid():
+        if form.is_valid() and form.is_multipart():
             # process the data in form.cleaned_data as required
             data = request.POST.copy()
-            p3 = Photo(photo=data.get('photo'))
+            # print ("FILES", request.FILES)
+            # file=(request.FILES['file'])
+            print("CHECK HERE" ,request.POST.get('file'))
+            f= request.POST.get('file')
+            
+
+            p3=Photo(file=request.POST.get('file'))
+            print("Check.2",p3.file.url)
             p3.save()
+            # image_url=p3.file.url
             post = Post(
                 titleText = data.get('titleText'), 
                 description=data.get('description'), 

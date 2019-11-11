@@ -18,6 +18,7 @@ from django.urls import include, path
 from django.conf.urls import url
 from django.views.generic import TemplateView
 from posts import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,4 +45,5 @@ urlpatterns = [
     path('profile/',include('login.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     path('',include('posts.urls')),
-]
+    ]
+# ]  + static(mysite.settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

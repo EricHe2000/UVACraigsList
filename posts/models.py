@@ -8,11 +8,11 @@ Default_id=1
 
 
 class Photo(models.Model):
-    uuid = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False,
-        )
+    # uuid = models.UUIDField(
+    #     primary_key=True, default=uuid.uuid4, editable=False,
+    #     )
     created_at = models.DateTimeField(auto_now_add=True) 
-    photo = models.FileField(verbose_name='photo', null=True, blank=True)
+    file = models.FileField(verbose_name='file', null=True, blank=True)
 
 
 # Create your models here.
