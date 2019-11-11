@@ -122,7 +122,7 @@ End of category indexes
 def addPost(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = PostForm(request.POST,request.FILES)
+        form = PostForm(request.POST)
         # check whether it's valid:
         if form.is_valid() and form.is_multipart():
             # process the data in form.cleaned_data as required
@@ -131,9 +131,11 @@ def addPost(request):
             #print(save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', ))
             # file=(request.FILES['file'])
                 # print("CHECK HERE" ,request.POST.get('images'))
-            print(request.FILES.get('file'))        
+            print(form.cleaned_data['file'])  
+            print(request.FILES)      
 
             p3=Photo(file=request.POST.get('file'))
+
             print(type(request.POST.get('file')))
 
             print("Check.2",request.FILES)
@@ -149,6 +151,7 @@ def addPost(request):
                 )
 
             post.save()
+            #post to s3
             key = p3.file.url
             s3 = boto3.resource('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID, aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
             bucket = s3.Bucket(settings.AWS_STORAGE_BUCKET_NAME)

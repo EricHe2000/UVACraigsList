@@ -38,7 +38,7 @@ class PostForm(forms.Form):
     # model=Photo
     # fields=['title','photo']
     #Picture_Description=forms.CharField(max_length=200)
-    file = forms.FileField(required=False)
+    file = forms.ImageField(required=False)
     #images = forms.URLField(widget=S3DirectWidget(dest='media'))
 
 
