@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from .models import Post, Photo
+from .models import Post# Photo
 from django.http import HttpResponse
 from django.utils import timezone
 from .forms import PostForm 
@@ -123,15 +123,15 @@ def addPost(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             data = request.POST.copy()
-            p3 = Photo(photo=data.get('photo'))
-            p3.save()
+            # p3 = Photo(photo=data.get('photo'))
+            # p3.save()
             post = Post(
                 titleText = data.get('titleText'), 
                 description=data.get('description'), 
                 creation_date = data.get('creation_date'), 
                 category = data.get('category'), 
                 price = data.get('price'), 
-                upload = p3,
+                image = data.get('photo'),
                 )
             post.save()
             # redirect to a new URL:
@@ -186,7 +186,10 @@ class PostDetailView(generic.DetailView):
     def get_queryset(self):
         return Post.objects.filter(creation_date__lte=timezone.now())
         
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all()
+        return context
 
 
 class SearchResultsView(generic.ListView):

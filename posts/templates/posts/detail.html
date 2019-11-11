@@ -1,14 +1,17 @@
 {% include "header.html" %}
 <div class="card" style="width: 18rem;">
-    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-    <div class="card-body">
-      <h5 class="card-title">{{ post.titleText }}</h5>
-      <p class="card-text">{{ post.description }}</p>
-      <p class="card-text">Category: {{ post.category }}</p>
-      <p class="card-text">Price: {{ post.price }}</p>
-      <p class="card-text">Date: {{ post.creation_date }}</p>
-      <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
-      <a href="/posts" class="btn btn-primary">Go Back</a>
-    </div>
+  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ post.titleText }}</h5>
+    <p class="card-text">{{ post.description }}</p>
+    <p class="card-text">Category: {{ post.category }}</p>
+    <p class="card-text">Price: {{ post.price }}</p>
+    <p class="card-text">Date: {{ post.creation_date }}</p>
+    <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
+    {% if car.image %}
+    <img src="{{ post.image }}" height="200" width="400"/>
+    {% endif %}
+    <a href="/posts" class="btn btn-primary">Go Back</a>
   </div>
+</div>
 

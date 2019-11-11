@@ -44,4 +44,6 @@ urlpatterns = [
     path('profile/',include('login.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     path('',include('posts.urls')),
+
+    path('s3direct/', include('s3direct.urls')),
 ]

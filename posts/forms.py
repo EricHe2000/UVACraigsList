@@ -6,6 +6,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 import datetime
 #from .models import Photo
+from s3direct.widgets import S3DirectWidget
 
 class PostForm(forms.Form):
     titleText = forms.CharField(max_length=200)
@@ -37,7 +38,7 @@ class PostForm(forms.Form):
     # model=Photo
     # fields=['title','photo']
     #Picture_Description=forms.CharField(max_length=200)
-    photo = forms.FileField(required=False)
+    image = forms.ImageField(widget=S3DirectWidget(dest='primary_destinationn'))
 
 
 

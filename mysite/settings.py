@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    's3direct',
 ]
 
 MIDDLEWARE = [
@@ -173,7 +174,24 @@ DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'project103renamelater'
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_DEFAULT_ACL=None
-AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+AWS_S3_ENDPOINT_URL = 'https://s3-us-east-1.amazonaws.com'
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:ListMultipartUploadParts",
+        "s3:AbortMultipartUpload"
+      ],
+      "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+    }
+  ]
+}
 
 S3DIRECT_DESTINATIONS = {
     'primary_destination': {
