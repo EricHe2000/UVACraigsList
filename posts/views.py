@@ -162,7 +162,7 @@ def newPostTest(request):
         post.description=request.POST['description']
         post.creation_date=request.POST['creation_date']
         post.category=request.POST['category']
-        post.photo=request.POST['In_Photo']
+        post.upload=request.POST['photo']
         post.save()
         
         '''
