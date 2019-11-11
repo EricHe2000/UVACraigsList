@@ -12,7 +12,7 @@ class Photo(models.Model):
     #     primary_key=True, default=uuid.uuid4, editable=False,
     #     )
     created_at = models.DateTimeField(auto_now_add=True) 
-    file = models.ImageField(upload_to="./pictures")
+    file = models.FileField()
     #image = S3DirectField(dest='media')
 
 

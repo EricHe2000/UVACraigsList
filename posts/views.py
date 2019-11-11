@@ -120,51 +120,54 @@ End of category indexes
 '''
 
 def addPost(request):
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = PostForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid() and form.is_multipart():
-            # process the data in form.cleaned_data as required
-            data = request.POST.copy()
-            
-            #print(save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', ))
-            # file=(request.FILES['file'])
-                # print("CHECK HERE" ,request.POST.get('images'))
-            print(form.cleaned_data['file'])  
-            print(request.FILES)      
+        if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
+            form=PostForm(request.POST)
+            files = request.FILES
+            print("IS THERE ANYTHING",files)
+            # check whether it's valid:
+            if form.is_valid() and form.is_multipart():
+                # process the data in form.cleaned_data as required
+                data = request.POST.copy()
+                
+                #print(save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', ))
+                # file=(request.FILES['file'])
+                    # print("CHECK HERE" ,request.POST.get('images'))
+                print(form.cleaned_data['file'])  
+                #print(request.FILES)      
 
-            p3=Photo(file=request.POST.get('file'))
+                p3=Photo(file=request.POST.get('file'))
 
-            print(type(request.POST.get('file')))
+                #print(type(request.POST.get('file')))
 
-            print("Check.2",request.FILES)
-            p3.save()
-            # image_url=p3.file.url
-            post = Post(
-                titleText = data.get('titleText'), 
-                description=data.get('description'), 
-                creation_date = data.get('creation_date'), 
-                category = data.get('category'), 
-                price = data.get('price'), 
-                upload = p3,
-                )
+                print("Check.2",request.FILES)
+                p3.save()
+                # image_url=p3.file.url
+                post = Post(
+                    titleText = data.get('titleText'), 
+                    description=data.get('description'), 
+                    creation_date = data.get('creation_date'), 
+                    category = data.get('category'), 
+                    price = data.get('price'), 
+                    upload = p3,
+                    )
 
-            post.save()
-            #post to s3
-            key = p3.file.url
-            s3 = boto3.resource('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID, aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
-            bucket = s3.Bucket(settings.AWS_STORAGE_BUCKET_NAME)
+                post.save()
+                #post to s3
+                key = p3.file.url
+                s3 = boto3.resource('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID, aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+                bucket = s3.Bucket(settings.AWS_STORAGE_BUCKET_NAME)
 
-            bucket.put_object(Key=key,Body=request.POST.get('file'))
-            # redirect to a new URL:
-            return HttpResponseRedirect('/posts')
+                bucket.put_object(Key=key,Body=request.POST.get('file'))
+                # redirect to a new URL:
+                return HttpResponseRedirect('/posts')
 
-        # if a GET (or any other method) we'll create a blank form
-    else:
-        form = PostForm()
+            # if a GET (or any other method) we'll create a blank form
+        else:
+            form = PostForm()
 
-    return render(request, 'posts/newpost.html', {'form': form})
+        return render(request, 'posts/newpost.html', {'form': form})
+
 
 
 def detail(request, post_id):
@@ -210,6 +213,10 @@ class PostDetailView(generic.DetailView):
         return Post.objects.filter(creation_date__lte=timezone.now())
         
 
+class CreatePostView(generic.FormView):
+    form_class=PostForm
+    template_name='posts/newpost.html'
+    success_url='../posts'
 
 
 class SearchResultsView(generic.ListView):
