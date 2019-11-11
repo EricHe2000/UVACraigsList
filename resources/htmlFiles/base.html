@@ -13,12 +13,10 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
+	
       {% block page %}
       {% endblock %}
-    {% else %}
-      {% include "index11.html" %}
-    {% endif %}
+	 
  
   </body>
   </html>

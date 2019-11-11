@@ -1,9 +1,281 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% block page %} 
+{% load socialaccount %}
+{% providers_media_js %}
+
+<!--
+UVA Craigslist
+Main Page
+Updated:
+10/13/2019 by Charles Ferraro
+-->
+
+<!--
+Quick Guide to CSS:
+https://www.w3schools.com/css/css_howto.asp
+https://www.w3schools.com/css/css_specificity.asp
+-->
+
+<!-- 
+This is a comment in HTML.
+There are no single line comments in HTML. 
+Only block and its this.
+ -->
+ 
+<!--
+NOTE: PLEASE PROPERLY INDENT THE HTML ELEMENTS.
+Indenting has no effect on the code, but it makes it a lot nicer.
+-->
+
+<!--
+The head tag is not for displaying elements. 
+It can display elements, but that use is discouraged. 
+The page header does NOT go in here.
+The head tag is supposed to contain metadata.
+The following tags are metadata: <title>, <style>, <meta>, <link>, <script>, and <base>.
+-->
+
 {% include "header.html" %}
-<h1>Search Results</h1>
 
-<ul>
-  {% for post in object_list %}
-  <h1></h1><a class="btn btn-blog pull-right marginBottom10" href="/posts/{{ post.id }}/">{{ post.titleText}}</a> 
+<head>
 
-  {% endfor %}
-</ul>
+	<!-- 
+	This sets the title of the browser tab.
+	-->
+	<title>Search Results</title>
+	
+	<!-- 
+	This defines the character set used in the page.
+	This really doesn't do much.
+	-->
+	<meta charset="UTF-8">
+	
+	<!--
+	Loads bootstrap 4.
+	-->
+	
+	<!--  -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+	<style>
+	
+		.hide {
+		
+			display: none;
+		
+		}
+	
+	</style>
+	
+	<!-- Javascript code for the dropdown list of categories. -->
+	<script>
+	
+		function filterByCategory() {
+		
+			var categoryFilter = document.getElementById("selectCategory").value;
+			var arrayOfCategoryElements = document.getElementsByClassName(categoryFilter);
+			var arrayOfAllElements = document.getElementsByClassName("all");
+			
+			var count;
+			
+			for(count = 0; count < arrayOfAllElements.length; count++) {
+			
+				if(arrayOfAllElements[count].classList.contains("hide")) {
+				
+					//Nothing
+				
+				} else {
+				
+					arrayOfAllElements[count].classList.toggle("hide");
+				
+				}
+			
+				
+			}
+			
+			for(count = 0; count < arrayOfCategoryElements.length; count++) {
+			
+				
+				arrayOfCategoryElements[count].classList.toggle("hide");
+			
+			}
+		
+		
+		}
+	
+	</script>
+
+
+</head>
+
+<!--
+Bootstrap Header
+-->
+
+<body>
+
+
+ 
+<div class="container">
+  <h2>Search Results</h2>
+  <div style="margin-top: -10px; margin-bottom: 10px;"> 
+  
+	Click on a post to view. 
+  	
+	{% if user.is_authenticated %}
+	
+		<button style="float: right;" class="btn btn-primary" type="submit" onclick="location.href = '/newpost';">New Post</button>
+	
+	{% endif %}
+
+  </div>
+  
+ 
+	<!-- Citation: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_dropdown-header&stacked=h -->
+
+	<div style="width:200px;">
+	
+	  <select id="selectCategory" onchange="filterByCategory()">
+		
+		<option disabled selected value="all">Pick a category</option>
+		<option value="all">All</option>
+	  
+		{% if object_list %}
+	  
+			<!-- Takes the array of categories in the first instance of post. The list of categories is part of every instance of post. -->
+			{% for categoryVar in object_list.0.CategoryChoices %}
+	  
+				<!-- Loops over each category and set the value to the for loop count starting from 1 -->
+				<option value="{{ categoryVar.1 }}">{{ categoryVar.1 }}</option>
+
+		
+			{% endfor %}
+		
+		
+		{% else %}
+		
+			<option value="-1">Error</option>
+		
+		{% endif %}
+		
+	  </select>
+	  
+	</div>
+
+	<br>
+	
+
+  <!-- Citation: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_collapsible_accordion&stacked=h -->
+  <div class="panel-group" id="accordion">
+  
+	{% if object_list %}
+		
+		{% for postVar in object_list %}
+		 
+			<div class="panel panel-default all {{ postVar.category }}">
+			
+			  <div class="panel-heading">
+			  
+				<span style="color: blue; float: left; width: 80px;">
+				
+					{{ postVar.category }}
+				
+				</span>
+			  
+				<span class="panel-title">
+				  
+					<!-- Note: The data-parent attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.-->
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">{{ postVar.titleText }}</a>
+		
+				</span>
+				
+				<span style="float: right;">
+				
+					${{ postVar.price }}
+				
+				</span>
+				
+			  </div>
+			  
+				{% if forloop.counter == 1 %}
+			  
+					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+			  
+				{% else %}
+			  
+					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+			  
+				{% endif %}
+			  
+				<div class="panel-body"> 
+				
+					<div> 
+					
+						<b>Posted by</b>
+						<br>
+						{{ postVar.user }}
+						<br>
+						<br>
+					
+						<b>Description</b>
+						<br>
+						{{ postVar.description }}
+						<br>
+						<br>
+						<b>Price</b>
+						<br>
+						${{ postVar.price }}
+						<br>
+						<br>
+						<b>Date Created</b>
+						<br>
+						{{ postVar.creation_date }}
+						<br>
+						<br>
+						<b><a href="/posts/{{ postVar.id }}/">More</a><b>
+					</div>
+				
+				</div>
+				
+			  </div>
+			  
+			</div>
+	
+		{% endfor %}
+		
+	{% else %} 
+
+	<p>No posts are available.</p>
+			
+	{% endif %}
+	
+	
+  </div> 
+</div>
+    
+	
+</body>
+
+
+
+{% endblock %} 
+
+
+<!-- Example of accessing elements within an array that is passed by a dictionary
+{% if test_array %}
+
+	<ul>
+	{% for test in test_array %}
+	 
+		<li> {{ test }} </li>
+	
+	{% endfor %} 
+	</ul>
+	
+{% endif %}
+-->

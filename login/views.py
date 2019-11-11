@@ -4,6 +4,9 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from login.forms import EditProfileForm
+from posts.models import Post
+
+
 
 # def profile(request, pk=None):
 #     if pk:
@@ -30,16 +33,20 @@ def view_profile(request, pk=None):
         user = User.objects.get(pk=pk)
     else:
         user = request.user
+      
+    
     args = {'user': user}
     return render(request, 'login/profile.html', args)
 
 def index(request):
-	context = {
-		'user': User.objects.order_by('-date')
-	if request.user.is_authenticated else []
-	}
 
-	return render(request, 'login/profile.html', context)
+    context = {
+
+        'user': User.objects.order_by('-date')
+    if request.user.is_authenticated else []
+    }
+
+    return render(request, 'login/profile.html', context)
 
 
 def logout_view(request):
