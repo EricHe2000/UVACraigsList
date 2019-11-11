@@ -14,6 +14,11 @@ class Photo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) 
     file = models.FileField(verbose_name='file')
     #image = S3DirectField(dest='media')
+    
+class Comment(models.Model):
+    commentPostID = models.IntegerField()
+    commentDescription = models.CharField(max_length=800)
+    commentUser = models.CharField(max_length=200)
 
 
 # Create your models here.
@@ -21,16 +26,7 @@ class Post(models.Model):
     titleText = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     creation_date = models.DateTimeField(auto_now=True)
-    
-    Electronics = 'Electronics'
-    Services = 'Services'
-    Miscellaneous = 'Misc'
-    Housing = 'Housing'
-    Food = 'Food'
-    Community = 'Community'
-    Textbooks = 'Textbooks'
-    Tutoring = 'Tutoring'
-    Clothes = 'Clothes'
+    '''
     CategoryChoices = [
     (Electronics, 'Electronics'),
     (Services, 'Services'),
@@ -41,6 +37,21 @@ class Post(models.Model):
     (Textbooks, 'Textbooks'),
     (Tutoring, 'Tutoring'),
     (Clothes, 'Clothes'),
+    ]
+    '''
+    
+    Miscellaneous = 'Miscellaneous'
+    
+    CategoryChoices = [
+    ( 'Electronics', 'Electronics'),
+    ('Services', 'Services'),
+    ('Miscellaneous', 'Miscellaneous'),
+    ('Housing', 'Housing'),
+    ('Food', 'Food'),
+    ('Community', 'Community'),
+    ('Textbooks', 'Textbooks'),
+    ('Tutoring', 'Tutoring'),
+    ('Clothes', 'Clothes'),
     ]
     category = models.CharField(max_length=200, choices=CategoryChoices, default=Miscellaneous)
     
