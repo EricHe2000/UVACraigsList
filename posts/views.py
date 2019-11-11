@@ -6,7 +6,7 @@ from django.views import generic
 from .models import Post
 from django.http import HttpResponse
 from django.utils import timezone
-from .forms import PostForm , AddressForm
+from .forms import PostForm 
 import operator
 
 from django.db.models import Q

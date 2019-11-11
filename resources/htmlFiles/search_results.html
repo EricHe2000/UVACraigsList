@@ -1,9 +1,9 @@
+{% include "header.html" %}
 <h1>Search Results</h1>
 
 <ul>
   {% for post in object_list %}
-    <li>
-      {{ post.titleText}}, {{ post.category }}, {{ post.description }}
-    </li>
+  <h1></h1><a class="btn btn-blog pull-right marginBottom10" href="/posts/{{ post.id }}/">{{ post.titleText}}</a> 
+
   {% endfor %}
 </ul>
