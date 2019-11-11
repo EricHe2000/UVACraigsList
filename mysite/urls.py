@@ -17,10 +17,29 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
 from django.views.generic import TemplateView
+from posts import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
-    path('', TemplateView.as_view(template_name="login/index.html")),
+    path('', views.mainIndex, name='index'),
+  
+
+    
+    #Beginning of category links work-around
+    
+    path('category/electronics/', views.categoryElectronicsIndex, name='index'),
+    path('category/services/', views.categoryServicesIndex, name='index'),
+    path('category/misc/', views.categoryMiscellaneousIndex, name='index'),
+    path('category/housing/', views.categoryHousingIndex, name='index'),
+    path('category/food/', views.categoryFoodIndex, name='index'),
+    path('category/community/', views.categoryCommunityIndex, name='index'),
+    path('category/textbooks/', views.categoryTextbookIndex, name='index'),
+    path('category/tutoring/', views.categoryTutoringIndex, name='index'),
+    path('category/clothes/', views.categoryClothesIndex, name='index'),
+    
+    #End of category links work-around
+    
     path('accounts/', include('allauth.urls')),
     path('profile/',include('login.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),

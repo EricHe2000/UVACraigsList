@@ -19,4 +19,10 @@ class UserProfile(models.Model):
     @receiver(pre_save, sender=User)
     def update_username_from_email(sender, instance, **kwargs):
         instance.user = instance.email
-
+        
+# @receiver(post_save, sender=User)
+# def update_user_profile(sender,instance,created,**kwargs):
+#     if created:
+#         UserProfile.object.create(user=instance)
+#     instance.UserProfile.save()
+#pre_save.connect(update_username_from_email, sender=User,dispatch_uid="update_username_from_email")

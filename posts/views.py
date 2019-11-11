@@ -6,7 +6,7 @@ from django.views import generic
 from .models import Post, Photo
 from django.http import HttpResponse
 from django.utils import timezone
-from .forms import PostForm , AddressForm
+from .forms import PostForm 
 import operator
 
 from django.db.models import Q
@@ -17,13 +17,103 @@ from django.db.models import Q
 
 
 # Create your views here.
+    
 
 def postIndex(request):
     
     template_name = 'posts/postIndex.html'
-    postList = Post.objects.order_by('-creation_date')[:8]
-    context = {'postList': postList} 
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'all'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
     return render(request, 'posts/postIndex.html',context)  
+    
+def mainIndex(request):
+    
+    template_name = 'posts/index.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'all'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/index.html',context)  
+
+'''
+Beginning of category indexs
+'''
+
+def categoryElectronicsIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Electronics'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryServicesIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Services'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryMiscellaneousIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Miscellaneous'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryHousingIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Housing'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryFoodIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Food'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryCommunityIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Community'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryTextbookIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Textbooks'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+def categoryTutoringIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Tutoring'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+    
+def categoryClothesIndex(request):
+    
+    template_name = 'posts/postIndex.html'
+    postList = Post.objects.order_by('-creation_date')
+    categoryClicked = 'Clothes'
+    context = {'postList': postList, 'categoryClicked': categoryClicked} 
+    return render(request, 'posts/postIndex.html',context)  
+
+'''
+End of category indexes
+'''
 
 def addPost(request):
     if request.method == 'POST':
