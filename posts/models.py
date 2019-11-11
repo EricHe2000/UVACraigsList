@@ -3,7 +3,7 @@ from django.utils import timezone
 import datetime
 import uuid
 from django.contrib.auth.models import User
-
+from s3direct.fields import S3DirectField
 Default_id=1
 
 
@@ -13,6 +13,7 @@ class Photo(models.Model):
     #     )
     created_at = models.DateTimeField(auto_now_add=True) 
     file = models.FileField(verbose_name='file', null=True, blank=True)
+    #image = S3DirectField(dest='media')
 
 
 # Create your models here.

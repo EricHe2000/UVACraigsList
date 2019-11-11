@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'storages',
+    's3direct',
 ]
 
 MIDDLEWARE = [
@@ -169,7 +170,7 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 #Upload media stuff
 AWS_ACCESS_KEY_ID = 'AKIASHXIHBZ7HFLAHRPK'
 AWS_SECRET_ACCESS_KEY = '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' 
-DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'uvacraigslist'
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_DEFAULT_ACL = None
@@ -194,36 +195,14 @@ STATICFILES_FINDERS = (
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-
-'''
-copy of my bucket policy
-{
-    "Version": "2012-10-17",
-    "Id": "Policy1573494626081",
-    "Statement": [
-        {
-            "Sid": "Stmt1573494542172",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::uvacraigslist/*"
-        },
-        {
-            "Sid": "Stmt1573494623557",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::154032082558:user/uvaCraigslist_user"
-            },
-            "Action": "s3:*",
-            "Resource": [
-                "arn:aws:s3:::uvacraigslist/*",
-                "arn:aws:s3:::uvacraigslist//"
-            ]
+S3DIRECT_DESTINATIONS = {
+    'media': {
+        # "key" [required] The location to upload file
+        #       1. String: folder path to upload to
+        #       2. Function: generate folder path + filename using a function  
+        'key': 'media',
         }
-    ]
-}
-
-'''
+    }
 
 
 # Activate Django-Heroku.

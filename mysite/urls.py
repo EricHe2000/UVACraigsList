@@ -45,5 +45,6 @@ urlpatterns = [
     path('profile/',include('login.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     path('',include('posts.urls')),
+    url(r'^s3direct/', include('s3direct.urls')),
     ]
 # ]  + static(mysite.settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
