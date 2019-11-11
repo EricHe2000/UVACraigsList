@@ -13,6 +13,7 @@ from django.db.models import Q
 from django.core.files.storage import default_storage
 import boto3
 from django.conf import settings
+import os
 
 
 #Citations
@@ -126,13 +127,14 @@ def addPost(request):
         if form.is_valid() and form.is_multipart():
             # process the data in form.cleaned_data as required
             data = request.POST.copy()
-            print ("FILES", request.FILES)
-            # file=(request.FILES['file'])
-            # print("CHECK HERE" ,request.POST.get('images'))
             
+            #print(save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', ))
+            # file=(request.FILES['file'])
+                # print("CHECK HERE" ,request.POST.get('images'))
+            print(request.FILES.get('file'))        
 
             p3=Photo(file=request.POST.get('file'))
-            
+            print(type(request.POST.get('file')))
 
             print("Check.2",request.FILES)
             p3.save()
@@ -145,6 +147,7 @@ def addPost(request):
                 price = data.get('price'), 
                 upload = p3,
                 )
+
             post.save()
             key = p3.file.url
             s3 = boto3.resource('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID, aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
