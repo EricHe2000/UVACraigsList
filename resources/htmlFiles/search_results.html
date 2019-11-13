@@ -1,21 +1,13 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<<<<<<< HEAD
-{% include "header.html" %}
-{% include "base.html" %}
-=======
->>>>>>> 86e549bcc637f2cd8335014ddf725514eaff6d9f
+
 {% block page %} 
 {% load socialaccount %}
 {% providers_media_js %}
 
-<<<<<<< HEAD
-
 <head>
 	<title>Search Results </title>
-
-=======
 <!--
 UVA Craigslist
 Main Page
@@ -61,57 +53,11 @@ The following tags are metadata: <title>, <style>, <meta>, <link>, <script>, and
 	This defines the character set used in the page.
 	This really doesn't do much.
 	-->
->>>>>>> 86e549bcc637f2cd8335014ddf725514eaff6d9f
 	<meta charset="UTF-8">
 	
 	<!--
 	Loads bootstrap 4.
 	-->
-<<<<<<< HEAD
-	{% load bootstrap4 %}
-</head>
-
-<!-- <ul>
-  {% for post in object_list %}
-    <li>
-      {{ post.titleText}}, {{ post.category }}, {{ post.description }}, {{post.price}}
-    </li>
-  {% endfor %}
-</ul> -->
-
-<body>
-	{%if user.is_authenticated%}
-		{% if object_list %}
-			{% for post in object_list %}
-
-					  <div class="col-md-10 blogShort">
-						<h1>{{ post.titleText }}</h1>
-						<article><p>
-							<h2>{{ post.description }}</h2>
-							<h4>{{ post.price }}</h4>
-							</p></article>
-						<h1></h1><a class="btn btn-blog pull-right marginBottom10" href="/posts/{{ postVar.id }}/">Go to Post</a> 
-					</div>
-					
-			{% endfor %}
-
-		{% else %} 
-
-			<p>Sorry, we coudldn't find any posts for that search, maybe try something else? </p>
-			
-		{% endif %}
-	{%else%}
-		<p> You need to be logged in in order to view posts!</p>
-		<a class="btn btn-primary" href="\">Back to Homepage</a>
- 		<li class="nav-item">
- 		<a href="{% url 'social:begin' 'google-oauth2' %}">Google Connect</a>
-
- 		{%endif%}
-
-</body>
-
-{% endblock %} 
-=======
 	
 	<!--  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -294,7 +240,7 @@ Bootstrap Header
 						{{ postVar.creation_date }}
 						<br>
 						<br>
-						<b><a href="/posts/{{ postVar.id }}/">More</a><b>
+						<b><a href="/posts/{{ postVar.id }}/">More</a></b>
 					</div>
 				
 				</div>
@@ -318,9 +264,7 @@ Bootstrap Header
 	
 </body>
 
-
-
-{% endblock %} 
+{% endblock %}
 
 
 <!-- Example of accessing elements within an array that is passed by a dictionary
@@ -336,4 +280,3 @@ Bootstrap Header
 	
 {% endif %}
 -->
->>>>>>> 86e549bcc637f2cd8335014ddf725514eaff6d9f
