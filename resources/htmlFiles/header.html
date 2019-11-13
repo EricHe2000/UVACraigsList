@@ -62,6 +62,9 @@
 					<li class="nav-item" style="font-size: 18px; margin: auto;">
 						<a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">{{ user.username }}</a>
 					</li>
+					<li class="nav-item" style="font-size: 18px; margin: auto;">
+						<a class="nav-link" href="../profile/logout"> Logout</a>
+					</li>
 				
 				{% else %}
 				
@@ -73,24 +76,21 @@
 
 
                 {%if user.is_authenticated%}
-                <li class="nav-item">
+
+                <li class="nav-item" style="font-size: 16px; margin: auto;">
                     <a class="nav-link" href = '../newpost';>New Post</a>
-
-                <li class="nav-item" style="font-size: 18px; margin: auto; margin-left: 8px;">
-                    <a class="nav-link" onclick="location.href = '/newpost';">New Post</a>
-
-
-                    <!-- <a class="nav-link" href=var>New Post</a> -->
                 </li>
-
-                {%endif%}
+                <li class="nav-item" style="font-size: 16px; margin: auto;">
+                    <a class="nav-link" href = '../posts';>Views Posts</a>
+                </li>
 
                 <!-- Search bar -->
 				
-				<form class="form-inline my-2 my-lg-0" style="margin: auto; margin-left: 20px;" action="/search" method="get" accept-charset="utf-8">
+				<form class="form-inline my-2 my-lg-0" style="margin: auto; margin-left: 600px;" action="/search" method="get" accept-charset="utf-8">
 				<input class="form-control mr-sm-2 searchfield" type="text" name="q" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
+				{%endif%}
 
             </ul>
 			

@@ -3,44 +3,42 @@
 {% load crispy_forms_tags %}
 <head>
 
-	<head>
-		<body>
+	<body>
 
-			<br>
-			<br>
+		<br>
+		<br>
 
-			<center><h1>Create a Post</h1></center>
+		<center><h1>Create a Post</h1></center>
 
 		{%if user.is_authenticated%}
 
 		<center>
 			<p> You are logged in as {{user.username}}</p>
-			<table>
 				<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
+				<table>
 					{{form.as_table}}
 				</table>
 				<button type="submit">Upload Post </button>
-				<!-- 				<input type="submit" value="save" /> -->
 
 
-
-				<!-- <input type="submit" value="save" /> -->
-				<!-- <button type="submit">Create a Post!</button> -->
+			</table>
+			<!-- <input type="submit" value="save" /> -->
+			<!-- <button type="submit">Create a Post!</button> -->
 			</form>
-		</center>
-		<!-- Default form contact -->
+	</center>
+	<!-- Default form contact -->
 
-		{%else%}
-		<p> You need to be logged in in order to make a post! </p>
-		{%endif%}
+	{%else%}
+	<p> You need to be logged in in order to make a post! </p>
+	{%endif%}
 
-		
-		
-	</form>
-	
-	
+
+
+</form>
+
 </body>
+
 
 <!-- 
 <tr><th><label for="id_titleText">TitleText:</label></th><td><input type="text" name="titleText" maxlength="200" required id="id_titleText"></td></tr>
