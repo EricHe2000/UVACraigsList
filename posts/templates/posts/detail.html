@@ -8,8 +8,9 @@
       <p class="card-text">Price: {{ post.price }}</p>
       <p class="card-text">Date: {{ post.creation_date }}</p>
       <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
-      <img src="{{ post.photo.file.url }}"/>
-      <p class = "card-text">{{ post.photo.file}}</p>
+      <img src="{{post.file.url}}"/>
+     <!--  <p class = "card-text">{{ post.photo.file}}</p> -->
+
       <a href="/posts" class="btn btn-primary">Go Back</a>
     </div>
   </div>
