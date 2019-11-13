@@ -3,49 +3,31 @@
 {% load crispy_forms_tags %}
 <head>
 
-<head>
-<body>
+	<head>
+		<body>
 
-	<br>
-	<br>
+			<br>
+			<br>
 
-	<center><h1>Create a Post</h1></center>
+			<center><h1>Create a Post</h1></center>
 
-	<form action="" method="POST">
-	
-		{% csrf_token %}
-
-		  </div>
-		<!-- <div>Title:</div> 
-		<input type="text" name="titleText"/>
-		<br/>
-		<br/>
-		<div>Description:</div> 
-		<textarea cols="35" rows="8" name="description">
-		</textarea>
-		<br/>
-		<input type="submit" value="Submit"/> -->
 		{%if user.is_authenticated%}
 
-			<center>
-				<p> You are logged in as {{user.username}}</p>
-				<form action="." method="post" enctype="multipart/form-data">
+		<center>
+			<p> You are logged in as {{user.username}}</p>
+			<table>
+				<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
+					{{form.as_table}}
+				</table>
+				<button type="submit">Upload Post </button>
 
-					<table>
-						{{ form.as_table }}
-					</table>
-
-				<input type="submit" value="Submit" />
-
-				<!-- <input type="submit" value="save" /> -->
-				<!-- <button type="submit">Create a Post!</button> -->
-				</form>
-			</center>
-<!-- Default form contact -->
+			</form>
+		</center>
+		<!-- Default form contact -->
 
 		{%else%}
-			<p> You need to be logged in in order to make a post! </p>
+		<p> You need to be logged in in order to make a post! </p>
 		{%endif%}
 
 		
@@ -54,3 +36,29 @@
 	
 	
 </body>
+
+<!-- 
+<tr><th><label for="id_titleText">TitleText:</label></th><td><input type="text" name="titleText" maxlength="200" required id="id_titleText"></td></tr>
+					<tr><th><label for="id_description">Description:</label></th><td><input type="text" name="description" maxlength="200" required id="id_description"></td></tr>
+					<tr><th><label for="id_category">Category:</label></th><td><select name="category" id="id_category">
+						<option value="Electronics">Electronics</option>
+
+						<option value="Services">Services</option>
+
+						<option value="Misc" selected>Miscellaneous</option>
+
+						<option value="Housing">Housing</option>
+
+						<option value="Food">Food</option>
+
+						<option value="Community">Community</option>
+
+						<option value="Textbooks">Textbooks</option>
+
+						<option value="Tutoring">Tutoring</option>
+
+						<option value="Clothes">Clothes</option>
+
+					</select></td></tr>
+					<tr><th><label for="id_price">Price:</label></th><td><input type="number" name="price" step="1.00" required id="id_price"></td></tr>
+					<tr><th><label for="id_file">File:</label></th><td><input type="file" name="file" accept="image/*" id="id_file"></td></tr> -->

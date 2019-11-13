@@ -19,6 +19,7 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 from posts import views
 from django.conf.urls.static import static
+from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,3 +49,4 @@ urlpatterns = [
     url(r'^s3direct/', include('s3direct.urls')),
     ]
 # ]  + static(mysite.settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

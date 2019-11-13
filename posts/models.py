@@ -7,18 +7,19 @@ from s3direct.fields import S3DirectField
 Default_id=1
 
 
-class Photo(models.Model):
-    # uuid = models.UUIDField(
-    #     primary_key=True, default=uuid.uuid4, editable=False,
-    #     )
-    created_at = models.DateTimeField(auto_now_add=True) 
-    file = models.FileField(verbose_name='file')
-    #image = S3DirectField(dest='media')
+
     
 class Comment(models.Model):
     commentPostID = models.IntegerField()
     commentDescription = models.CharField(max_length=800)
     commentUser = models.CharField(max_length=200)
+# class Photo(models.Model):
+#     # uuid = models.UUIDField(
+#     #     primary_key=True, default=uuid.uuid4, editable=False,
+#     #     )
+#     created_at = models.DateTimeField(auto_now_add=True) 
+#     file = models.ImageField(upload_to='images/')
+#     #image = S3DirectField(dest='media')
 
 
 # Create your models here.
@@ -59,8 +60,7 @@ class Post(models.Model):
     #https://djangopackages.org/packages/p/django-location-field/
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
-    upload = models.OneToOneField(Photo,on_delete=models.DO_NOTHING)
-
+    file = models.ImageField(verbose_name= 'file',null=True, blank=True)
 
     def __str__(self):
         return self.titleText
