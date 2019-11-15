@@ -22,7 +22,7 @@ def update_profile(request):
 
         if form.is_valid():
             form.save()
-            return redirect(reverse('login:view_profile'))
+            return redirect('/profile/')
     else:
         form = EditProfileForm(instance=request.user)
         args = {'form': form}
@@ -46,7 +46,7 @@ def index(request):
     if request.user.is_authenticated else []
     }
 
-    return render(request, 'login/profile.html', context)
+    return render(request, '', context)
 
 
 def logout_view(request):
