@@ -46,6 +46,17 @@ class PostForm(forms.ModelForm):
         fields=('titleText','description','category','price','file')
 
 
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model=Comment
+        
+        #commentPostID = models.IntegerField()
+        #commentDescription = models.CharField(max_length=800)
+        #commentUser = models.CharField(max_length=200)
+        
+        fields=('commentDescription','commentPostID','commentUser',)
+
 
 
 STATES = (

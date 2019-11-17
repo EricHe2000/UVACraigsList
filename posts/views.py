@@ -217,7 +217,7 @@ def newPostTest(request):
     else:
             return render(request,'posts/index.html')
 
-
+'''
 class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'posts/detail.html'
@@ -230,7 +230,33 @@ class PostDetailView(generic.DetailView):
 #     form_class=PostForm
 #     template_name='posts/newpost.html'
 #     success_url='../posts'
+'''
 
+def PostDetailView(request, num=1):
+        
+    post = Post.objects.get(pk=num)
+    
+    if request.method == 'POST':
+    
+        #form=CommentForm(request.POST)
+        newComment = Comment();
+        
+        newComment.commentPostID = num
+        newComment.commentDescription = request.POST.get("commentDescription")
+        newComment.commentUser = post.user
+        
+        newComment.save()
+
+        return HttpResponseRedirect('')
+        
+    else:
+        form=CommentForm()
+
+    #commentList = Comment.objects.order_by('-creation_date')
+    commentList = Comment.objects.filter(commentPostID__gte=post.id)
+    context = {'post': post, 'commentList': commentList, 'form': form} 
+        
+    return render(request, 'posts/detail.html',context)   
 
 class SearchResultsView(generic.ListView):
     model = Post

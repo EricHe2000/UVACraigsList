@@ -1,17 +1,231 @@
 {% include "header.html" %}
-<div class="card" style="width: 18rem;">
-    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-    <div class="card-body">
-      <h5 class="card-title">{{ post.titleText }}</h5>
-      <p class="card-text">{{ post.description }}</p>
-      <p class="card-text">Category: {{ post.category }}</p>
-      <p class="card-text">Price: {{ post.price }}</p>
-      <p class="card-text">Date: {{ post.creation_date }}</p>
-      <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
-      <img src="{{post.file.url}}"/>
-     <!--  <p class = "card-text">{{ post.photo.file}}</p> -->
 
-      <a href="/posts" class="btn btn-primary">Go Back</a>
-    </div>
-  </div>
+<html>
 
+	<head>
+	
+		<style>
+		
+post-container {
+    margin: 20px 20px 0 0;  
+    border: 5px solid #333;
+    overflow: auto
+}
+.post-thumb {
+    float: left
+}
+.post-thumb img {
+    display: block
+}
+.post-content {
+
+    margin-left: 0px;
+	
+}
+.post-title {
+    font-weight: bold;
+    font-size: 200%
+}
+
+.imageHolder {
+
+
+
+}
+
+.imageDetail {
+
+	width: 300px;
+	box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+	margin-left: 50px;
+	margin-top: 50px;
+	border-radius: 15px;
+
+}
+
+.postInfoHolder {
+
+	float: right; 
+	margin-top: 50px; 
+	margin-left: 30px; 
+
+
+}
+
+.firstHolder {
+
+	background-color: #000154;
+	width: auto;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+	padding: 10px; 
+	max-width: 600px;
+
+}
+
+.secondHolder {
+
+	border-radius: 15px;
+	font-size: 50px;
+	//box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+
+
+}
+
+.commentHolder {
+
+	background-color: #000154;
+	width: auto;
+	border-radius: 15px;
+	box-shadow: 0 4px 5px 0 grey, 0 6px 20px 0 grey;
+	padding: 10px; 
+	width: 400px;
+	margin-bottom: 0px; 
+	margin-left: 50px; 
+	color: white;
+
+}
+
+.commentForm {
+
+	margin-left: 50px;
+	width: 300px;
+	height: 50px;
+	border-radius: 5px;
+	font-size: 10px;
+
+
+}
+
+.submitButton {
+
+
+	width: 50px; 
+	height: 50px; 
+	border-radius: 50%/50%; 
+	position: relative; 
+	top: -15px; 
+	background-color: #000154;
+	border-color: white;
+
+}
+
+		</style>
+	
+	</head>
+
+	<body>
+	
+	<div style="display: inline-block;">
+	
+		<img src="{{post.file.url}}" class="imageDetail" />
+		
+		<div class="postInfoHolder"> 
+			<div class="firstHolder">
+				<div style="font-size: 20px; color: white;">{{ post.titleText }}<span style="font-size: 12px; color: #d1cfcf;"> posted by {{ post.user }}</span></div>
+				<div style="margin-left: 0px; margin-top: 10px; color: #d1cfcf; text-overflow: ellipsis; font-size: 14px;">{{ post.description }}</div>
+				<div style="margin-left: 0px; margin-top: 10px; color: #bababa; font-size: 14px;">{{ post.creation_date }}</div>
+			</div>		
+
+			
+			<div class="secondHolder">
+			
+				<div style="margin-left: 0px; color: green;">${{ post.price }}</div>
+				
+			</div>
+			
+		</div>
+	
+			
+	</div>
+	
+	
+	{% if post %} 
+	
+		{% if user.is_authenticated %}
+	
+			<div style="margin-top: 30px; margin-bottom: 10px;">
+			
+			
+				<form action="" method="post" id="descriptionForm" style="display: inline-block">
+				
+					{% csrf_token %}
+				
+				<textarea class="commentForm" id="commentDescription" type="text" name="commentDescription" form="descriptionForm" value="" placeholder="Post a comment"></textarea>
+				<input type="submit" value="" class="submitButton">
+				</form>
+
+			
+			</div>
+			
+		{% else %}
+		
+			<div>
+			
+				You are not logged in.
+			
+			</div>
+		
+		{% endif %}
+	
+	{% endif %}
+
+	{% if commentList %}
+	
+		{% for commentVar in commentList %}
+		
+			{% if commentVar.commentPostID == post.id %}
+		
+				<div style="display: inline-block; width: 700px; margin-top: -10px">
+				
+					<div class="commentHolder">
+				
+					{{ commentVar.commentDescription }}
+					
+					</div>
+					
+					<div style="position: relative; top: -48px; margin-left: 455px; color: grey; ">
+						
+						<div>{{ commentVar.commentUser }}</div>
+						<div>{{ commentVar.creation_date }}</div>
+						
+					</div>
+				
+				</div>
+				
+				<br>
+				
+			{% endif %}
+			
+		
+		{% endfor %}
+	
+	
+	{% else %}
+	
+	
+	{% endif %}
+	
+	
+	
+
+
+		<!--
+		<div class="card" style="width: 18rem;">
+
+			<div class="card-body">
+			  <h5 class="card-title">{{ post.titleText }}</h5>
+			  <p class="card-text">{{ post.description }}</p>
+			  <p class="card-text">Category: {{ post.category }}</p>
+			  <p class="card-text">Price: {{ post.price }}</p>
+			  <p class="card-text">Date: {{ post.creation_date }}</p>
+			  <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
+			  <img src="{{post.file.url}}"/>
+
+			  <a href="/posts" class="btn btn-primary">Go Back</a>
+			</div>
+		  </div>
+		  -->
+		  
+	</body>
+</html>

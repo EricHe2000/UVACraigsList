@@ -13,6 +13,7 @@ class Comment(models.Model):
     commentPostID = models.IntegerField()
     commentDescription = models.CharField(max_length=800)
     commentUser = models.CharField(max_length=200)
+    creation_date = models.DateTimeField(auto_now=True)
 # class Photo(models.Model):
 #     # uuid = models.UUIDField(
 #     #     primary_key=True, default=uuid.uuid4, editable=False,
