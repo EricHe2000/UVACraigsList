@@ -1,4 +1,4 @@
-""" import datetime
+import datetime
 from django.test import TestCase
 from django.utils import timezone
 from django.db import models
@@ -31,7 +31,7 @@ class PostModelTests(TestCase):
 
 '''
 
-class PostTestCase(TestCase):
+""" class PostTestCase(TestCase):
     def setUp(self):
     
         Post.objects.create(titleText="testCase", 
