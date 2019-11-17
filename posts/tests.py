@@ -1,4 +1,4 @@
-import datetime
+""" import datetime
 from django.test import TestCase
 from django.utils import timezone
 from django.db import models
@@ -105,4 +105,4 @@ class PostTestCase(TestCase):
                 postDescriptionBlankBool = 1
                 
         self.assertEqual(postDescriptionBlankBool, 0);
-        
+         """
