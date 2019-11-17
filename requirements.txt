@@ -20,7 +20,6 @@ mccabe==0.6.1
 oauthlib==3.1.0
 Pillow==6.2.0
 psycopg2==2.8.3
-pygame==1.9.6
 PyJWT==1.7.1
 pylint==2.3.1
 pylint-django==2.0.11
@@ -69,7 +68,6 @@ jmespath==0.9.4
 oauthlib==3.1.0
 Pillow==6.2.0
 psycopg2==2.8.3
-pygame==1.9.3
 PyJWT==1.7.1
 python-dateutil==2.8.0
 python-social-auth==0.3.6
