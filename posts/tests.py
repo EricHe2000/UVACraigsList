@@ -31,7 +31,7 @@ class PostModelTests(TestCase):
 
 '''
 
-""" class PostTestCase(TestCase):
+class PostTestCase(TestCase):
     def setUp(self):
     
         Post.objects.create(titleText="testCase", 
@@ -105,4 +105,3 @@ class PostModelTests(TestCase):
                 postDescriptionBlankBool = 1
                 
         self.assertEqual(postDescriptionBlankBool, 0);
-         """

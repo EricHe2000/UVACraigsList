@@ -1,4 +1,4 @@
-""" from django.test import TestCase
+from django.test import TestCase
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 
@@ -8,4 +8,4 @@ def test_PrrofileUpdateForm_invalid(self):
                                         'first_name':'Eric',
                                         'last_name':'He',
                                         })
-        self.assertFalse(form.is_valid()) """
+        self.assertFalse(form.is_valid()) 
