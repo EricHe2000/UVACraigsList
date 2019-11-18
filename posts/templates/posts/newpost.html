@@ -2,6 +2,8 @@
 
 {% load crispy_forms_tags %}
 <head>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 
 	<head>
 		<body>
@@ -34,7 +36,25 @@
 		
 	</form>
 	
-	
+<center>
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+	center: [-78.509, 38.033],
+	zoom: 14,
+	bearing: 8
+  });
+  
+  map.addControl(new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+}));
+</script>
+</center>
+		
 </body>
 
 <!-- 
