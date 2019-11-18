@@ -169,11 +169,15 @@ End of category indexes
 #         return render(request, 'posts/newpost.html', {'form': form})
 
 def add_Post_view(request):
+    print(request.method)
     if request.method == 'POST':
         form=PostForm(request.POST,request.FILES)
-        # print (PostForm())
         if form.is_valid():
-            form.save()
+            post=form.save(commit=False)
+            print(request.user)
+            post.user=request.user
+            post.save()
+
             return HttpResponseRedirect('/posts')
     else:
         form=PostForm()
@@ -243,9 +247,9 @@ def PostDetailView(request, num=1):
         
         newComment.commentPostID = num
         newComment.commentDescription = request.POST.get("commentDescription")
-        newComment.commentUser = post.user
-        
+        newComment.user = request.user
         newComment.save()
+
         return HttpResponseRedirect('../'+str(num))
         
     else:
@@ -254,7 +258,6 @@ def PostDetailView(request, num=1):
     #commentList = Comment.objects.order_by('-creation_date')
     commentList = Comment.objects.filter(commentPostID__gte=post.id)
     context = {'post': post, 'commentList': commentList, 'form': form} 
-        
     return render(request, 'posts/detail.html',context)   
 
 class SearchResultsView(generic.ListView):
