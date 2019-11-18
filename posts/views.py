@@ -246,8 +246,7 @@ def PostDetailView(request, num=1):
         newComment.commentUser = post.user
         
         newComment.save()
-
-        return HttpResponseRedirect('')
+        return HttpResponseRedirect('../'+str(num))
         
     else:
         form=CommentForm()

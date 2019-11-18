@@ -43,7 +43,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model=Post
-        fields=('titleText','description','category','price','file')
+        fields=('titleText','description','category','price','file','user')
 
 
 class CommentForm(forms.ModelForm):
@@ -55,7 +55,7 @@ class CommentForm(forms.ModelForm):
         #commentDescription = models.CharField(max_length=800)
         #commentUser = models.CharField(max_length=200)
         
-        fields=('commentDescription','commentPostID','commentUser',)
+        fields=('commentDescription','commentPostID','user',)
 
 
 
