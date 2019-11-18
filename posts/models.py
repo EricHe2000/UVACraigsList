@@ -12,7 +12,7 @@ Default_id=1
 class Comment(models.Model):
     commentPostID = models.IntegerField()
     commentDescription = models.CharField(max_length=800)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     creation_date = models.DateTimeField(auto_now=True)
 # class Photo(models.Model):
 #     # uuid = models.UUIDField(
@@ -60,7 +60,7 @@ class Post(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     #https://djangopackages.org/packages/p/django-location-field/
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=Default_id)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.ImageField(verbose_name= 'file',null=True, blank=True)
 
     def __str__(self):
