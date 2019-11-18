@@ -122,7 +122,7 @@ post-container {
 		
 		<div class="postInfoHolder"> 
 			<div class="firstHolder">
-				<div style="font-size: 20px; color: white;">{{ post.titleText }}<span style="font-size: 12px; color: #d1cfcf;"> posted by {{ post.user }}</span></div>
+				<div style="font-size: 20px; color: white;">{{ post.titleText }}<span style="font-size: 12px; color: #d1cfcf;"> posted by {{ post.user.username }}</span></div>
 				<div style="margin-left: 0px; margin-top: 10px; color: #d1cfcf; text-overflow: ellipsis; font-size: 14px;">{{ post.description }}</div>
 				<div style="margin-left: 0px; margin-top: 10px; color: #bababa; font-size: 14px;">{{ post.creation_date }}</div>
 			</div>		
@@ -147,12 +147,13 @@ post-container {
 			<div style="margin-top: 30px; margin-bottom: 10px;">
 			
 			
-				<form action="" method="post" id="descriptionForm" style="display: inline-block">
+				<form action="../{{post.id}}/" method="post" id="descriptionForm" style="display: inline-block">
 				
 					{% csrf_token %}
 				
 				<textarea class="commentForm" id="commentDescription" type="text" name="commentDescription" form="descriptionForm" value="" placeholder="Post a comment"></textarea>
-				<input type="submit" value="" class="submitButton">
+
+				<input type="submit" value ='/' class="submitButton">
 				</form>
 
 			
@@ -186,7 +187,7 @@ post-container {
 					
 					<div style="position: relative; top: -48px; margin-left: 455px; color: grey; ">
 						
-						<div>{{ commentVar.commentUser }}</div>
+						<div>{{ commentVar.user.username }}</div>
 						<div>{{ commentVar.creation_date }}</div>
 						
 					</div>
