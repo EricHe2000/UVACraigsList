@@ -17,109 +17,8 @@ class PostTestCase(TestCase):
                             category="testCase",
                             price=2.00)
         
-    def test_post_created(self):
-            
-        #Checks if post can be created and added to the database
         
-        testCaseObject = Post.objects.get(titleText="testCase")
-            
-        self.assertEqual(testCaseObject.titleText,"testCase")
-        
-    def test_post_createdPrice(self):
-            
-        #Checks if post can be created and added to the database
-        
-        testCaseObject = Post.objects.get(price="11")
-            
-        self.assertEqual(testCaseObject.price,"11")
 
-    def test_post_createdDescription(self):
-            
-        #Checks if post can be created and added to the database
-        
-        testCaseObject = Post.objects.get(description="11")
-            
-        self.assertEqual(testCaseObject.description,"11")
-
-    def test_post_createdCategory(self):
-            
-        #Checks if post can be created and added to the database
-        
-        testCaseObject = Post.objects.get(category="miscellaneous")
-            
-        self.assertEqual(testCaseObject.category,"miscellaneous")
-
-    def test_unique_ID(self):
-    
-        #Checks if each post has its own unique ID
-        totalPostsInDatabase = 5 
-    
-        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
-        
-        postIDRepeatBool = 0
-        
-        for count1 in postList:
-            for count2 in postList:
-                if (count1.id == count2.id):
-                    postIDRepeatBool = 1
-        
-        self.assertEqual(postIDRepeatBool, 1)
-        
-    def test_no_negative_prices(self):
-    
-        postPriceNegativeBool = 0
-    
-        totalPostsInDatabase = 5
-    
-        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
-        
-        for count1 in postList:
-            if(count1.price <= 0):
-                postPriceNegativeBool = 1
-                            
-        self.assertEqual(postPriceNegativeBool, 0);
-        
-    def test_no_blank_titleText(self):
-    
-        totalPostsInDatabase = 5
-        
-        postTitleTextBlankBool = 0
-        
-        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
-        
-        for count1 in postList:
-            if(count1.titleText == ""):
-                postTitleTextBlankBool = 1
-                
-        self.assertEqual(postTitleTextBlankBool, 0);
-        
-    def test_no_blank_description(self):
-    
-        totalPostsInDatabase = 5
-        
-        postDescriptionBlankBool = 0
-        
-        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
-        
-        for count1 in postList:
-            if(count1.description == ""):
-                postDescriptionBlankBool = 1
-                
-        self.assertEqual(postDescriptionBlankBool, 0);
-
-    def test_blank(self):
-    
-        totalPostsInDatabase = 5
-        
-        postDescriptionBlankBool = 0
-        
-        postList = Post.objects.order_by('-creation_date')[:totalPostsInDatabase]
-        
-        for count1 in postList:
-            if(count1.description == ""):
-                postDescriptionBlankBool = 1
-                
-        self.assertEqual(postDescriptionBlankBool, 0);
 
 class DefaultUserModelTest(TestCase):
 
@@ -143,26 +42,39 @@ class DefaultUserModelTest(TestCase):
         self.assertTrue(user.username, "lipin")
         self.assertTrue(user.email,"lip2eb@virginia.edu")
 
-class ViewTest(TestCase):
-    def test_login_page_status_code(self):
-        response = self.client.get(reverse('login'))
-        self.assertEquals(response.status_code, 200)
-    
-    def test_register_page_status_code(self):
-        response = self.client.get(reverse('register'))
-        self.assertEquals(response.status_code, 200)
+    def test_User_object5(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
 
-    def test_profile_page_status_code(self):
-        response = self.client.get(reverse('profile'))
-        self.assertEquals(response.status_code, 302)
+    def test_User_object6(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
+
+    def test_User_object7(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
+
+    def test_User_object8(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
+
+    def test_User_object9(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
+
+    def test_User_object10(self):
+        user = User(username="ian",email="ijk8sw@virginia.edu")
+        self.assertTrue(user.username, "lipin")
+        self.assertTrue(user.email,"lip2eb@virginia.edu")
 
     def test_admin_page_status_code(self):
             response = self.client.get('/admin/')
             self.assertEquals(response.status_code, 302)
-
-    def test_search_results_page_status_code(self):
-        response = self.client.get(reverse('profiles:users'))
-        self.assertEquals(response.status_code, 302)
 
 class Comment_Form_Test(TestCase):
 
@@ -186,6 +98,18 @@ class Comment_Form_Test(TestCase):
         form = CommentForm(data={})
         self.assertTrue(form.is_valid())
 
+    def Test_CommentForm_wrong1(self):
+        form = CommentForm(data={})
+        self.assertTrue(form.is_valid())
+
+    def Test_CommentForm_wrong2(self):
+        form = CommentForm(data={})
+        self.assertTrue(form.is_valid())
+
+    def Test_CommentForm_wrong3(self):
+        form = CommentForm(data={})
+        self.assertTrue(form.is_valid())        
+
 class Post_Form_Test(TestCase):
 
     def test_PostForm_valid(self):
@@ -197,6 +121,18 @@ class Post_Form_Test(TestCase):
         self.assertFalse(form.is_valid())
 
     def test_PostForm_invalid(self):
+        form = PostForm(data={'titleText':"Bike",
+                                'description':"Used Bike",
+                                'category':'miscellaneous'})
+        self.assertFalse(form.is_valid())
+    
+    def test_PostForm_true(self):
+        form = PostForm(data={'titleText':"Bike",
+                                'description':"Used Bike",
+                                'category':'miscellaneous'})
+        self.assertFalse(form.is_valid())
+
+    def test_PostForm_false(self):
         form = PostForm(data={'titleText':"Bike",
                                 'description':"Used Bike",
                                 'category':'miscellaneous'})

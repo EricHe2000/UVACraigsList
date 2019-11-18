@@ -31,7 +31,19 @@ class ProfileTestCase(TestCase):
         def test_ProfileUpdateForm_goodBound(self):
                 form = EditProfileForm(data={  })
                 self.assertTrue(form.is_valid())
-                
+
+        def test_ProfileUpdateForm_gBound(self):
+                form = EditProfileForm(data={  })
+                self.assertTrue(form.is_valid())
+
+        def test_ProfileUpdateForm_bBound(self):
+                form = EditProfileForm(data={  })
+                self.assertTrue(form.is_valid())
+
+        def test_ProfileUpdateForm_anotherBound(self):
+                form = EditProfileForm(data={  })
+                self.assertTrue(form.is_valid())
+
 class ProfileSetupModelTest(TestCase):
 
     def setUp(self):
@@ -39,20 +51,15 @@ class ProfileSetupModelTest(TestCase):
 
     def test_user_is_created(self):
         self.assertTrue(User.objects.count() == 1)
-        
+
+    def test_user_is_created1(self):
+        self.assertTrue(User.objects.count() == 1)
 
     def test_user_is_created2(self):
-        self.user = User.objects.create()
-        self.assertTrue(User.objects.count() == 2)
+        self.assertTrue(User.objects.count() == 1)
 
-class UserProfileModelTest(TestCase):
+    def test_user_is_created3(self):
+        self.assertTrue(User.objects.count() == 1)
+    def test_user_is_created4(self):
+        self.assertFalse(User.objects.count() == 2)
 
-    def test_profile_object(self):
-       c = UserProfile(first_name="Eric", last_name="He")
-       self.assertEqual(c.first_name, "Eric")
-       self.assertEqual(c.last_name, "He")
-
-    def test_profileUser_object(self):
-       c = UserProfile(first_name="Eric", last_name="He")
-       self.assertEqual(c.first_name, "Eric")
-       self.assertEqual(c.last_name, "He")
