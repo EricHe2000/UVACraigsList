@@ -14,6 +14,8 @@ from django.core.files.storage import default_storage
 import boto3
 from django.conf import settings
 import os
+from PIL import Image
+from io import StringIO
 
 
 
@@ -126,6 +128,14 @@ def add_Post_view(request):
         form=PostForm(request.POST,request.FILES)
         # print (PostForm())
         if form.is_valid():
+            image_field= request.FILES['file']
+            image_file = StringIO.StringIO(image_field.read())
+
+            image=Image.open(image_field)
+            w,h = image.size((w/2,h/2,Image.ANTIALIAS))
+            image_file = StringIO.StringIO()
+            image.save(image_file,'JPEG',quality=90)
+            image_field.file=image_file
             form.save()
             return HttpResponseRedirect('/posts')
     else:

@@ -5,16 +5,11 @@ import uuid
 from django.contrib.auth.models import User
 from s3direct.fields import S3DirectField
 Default_id=1
-
-
-
     
 class Comment(models.Model):
     commentPostID = models.IntegerField()
     commentDescription = models.CharField(max_length=800)
     commentUser = models.CharField(max_length=200)
-
-
 
 # Create your models here.
 class Post(models.Model):
