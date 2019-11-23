@@ -37,11 +37,11 @@ post-container {
 
 	width: 300px;
 	box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
-	margin-left: 50px;
-	margin-top: 50px;
 	border-radius: 15px;
-
+	margin: auto;
+	float: left;
 }
+
 
 .postInfoHolder {
 
@@ -116,8 +116,6 @@ post-container {
 
 	<body>
 	
-	<div style="display: inline-block;">
-	
 		<img src="{{post.file.url}}" class="imageDetail" />
 		
 		<div class="postInfoHolder"> 
@@ -137,7 +135,6 @@ post-container {
 		</div>
 	
 			
-	</div>
 	
 	
 	{% if post %} 

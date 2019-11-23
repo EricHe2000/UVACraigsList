@@ -196,21 +196,21 @@ Bootstrap Header
 			{% endif %}
 			
 			  <div class="panel-heading">
-			  
-				<span style="color: blue; float: left; width: 100px;">
+			  <b>
+				<span style="color: black; float: left; width: 100px;">
 				
 					{{ postVar.category }}
 				
 				</span>
-			  
+			</b>
 				<span class="panel-title">
 				  
 					<!-- Note: The data-parent attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.-->
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">{{ postVar.titleText }}</a>
+					<a data-toggle="collapse" data-parent="#accordion"  style="color: blue;"  href="#collapse{{ forloop.counter }}">{{ postVar.titleText }}</a>
 		
 				</span>
 				
-				<span style="float: right;">
+				<span style= " float: right;">
 				
 					${{ postVar.price }}
 				
