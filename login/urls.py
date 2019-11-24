@@ -11,7 +11,7 @@ from django.conf import settings
 app_name = 'login'
 
 urlpatterns= [
-	path('', TemplateView.as_view(template_name='login/profile.html')),
+    path('', views.view_profile, name='view_profile'),
 	path('profileupdate', views.update_profile, name='profileupdate'),
 	url(r'^profile/$', views.view_profile, name='view_profile'),
 	path('logout', views.logout_view),

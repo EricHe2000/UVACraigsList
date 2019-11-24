@@ -29,14 +29,35 @@ def update_profile(request):
         return render(request, 'login/edit_profile.html', args)
 
 def view_profile(request, pk=None):
-    if pk:
-        user = User.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/profile/')
+        
+        else:
+        
+            return redirect('/profile/')
+        
     else:
-        user = request.user
-      
     
-    args = {'user': user}
-    return render(request, 'login/profile.html', args)
+        form = EditProfileForm(instance=request.user)
+    
+        if pk:
+            user = User.objects.get(pk=pk)
+        else:
+            user = request.user
+          
+        stringUsername = str(user.username)
+        #stringUsername = "test"
+          
+        userPostList = Post.objects.filter(user__username__contains=stringUsername)
+
+        context = {'user': user, 'userPostList': userPostList, 'form': form}
+        
+        return render(request, 'login/profile.html', context)
 
 def index(request):
 

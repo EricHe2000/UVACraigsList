@@ -217,30 +217,44 @@ Bootstrap Header
 			  
 				<div class="panel-body"> 
 				
-					<div> 
+					<div style="display: inline-block; width: 800px;">
 					
-						<b>Posted by</b>
-						<br>
-						{{ postVar.user }}
-						<br>
-						<br>
+						<img style="max-height: 400px; width: 300px; border-radius: 5px; float: left;" src="{{postVar.file.url}}">
 					
-						<b>Description</b>
-						<br>
-						{{ postVar.description }}
-						<br>
-						<br>
-						<b>Price</b>
-						<br>
-						${{ postVar.price }}
-						<br>
-						<br>
-						<b>Date Created</b>
-						<br>
-						{{ postVar.creation_date }}
-						<br>
-						<br>
-						<b><a href="/posts/{{ postVar.id }}/">More</a></b>
+						<div style="margin-left: 315px; width: 300px; height: 300px;">
+						
+							<div style="border: 1px solid #e3e3e3; background-color: #f5f5f5; border-radius: 5px; height: 30%; width: 100%;">
+							
+								<div style="padding-left: 5px; padding-top: 5px; margin-left: 5px; font-size: 15px;">
+								{{ postVar.titleText }}
+								</div>
+								<div style="font-size: 10px; margin-left: 10px; color: grey;">
+									Posted by {{ postVar.user.first_name }} {{ postVar.user.last_name }}</span>
+								</div>
+								<div style="font-size: 10px; margin-left: 10px; color: grey;">
+								
+									{{ postVar.creation_date }}
+								
+								</div>
+								<div style="position: relative; bottom: -5px; left: 10px; font-size: 18px; color: #0db80d;">
+								
+									${{ postVar.price }}
+								
+								</div>
+								
+							</div>
+							
+							<div style="border: 1px solid #e3e3e3; background-color: #f5f5f5; border-radius: 5px; margin-top: 5%; width: 100%; padding: 10px; font-size: 12px;">
+								
+								{{ postVar.description }}
+							
+							</div>
+							
+							<a class="btn btn-outline-primary" style="margin-top: 10px; border: 1px solid blue;" href="/posts/{{ postVar.id }}/">More</a>
+						
+						
+						</div>
+						
 					</div>
 				
 				</div>

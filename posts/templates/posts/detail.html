@@ -2,227 +2,253 @@
 
 <html>
 
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
 	<head>
-	
-		<style>
 		
-post-container {
-    margin: 20px 20px 0 0;  
-    border: 5px solid #333;
-    overflow: auto
-}
-.post-thumb {
-    float: left
-}
-.post-thumb img {
-    display: block
-}
-.post-content {
+		<style>
+			
 
-    margin-left: 0px;
-	
-}
-.post-title {
-    font-weight: bold;
-    font-size: 200%
-}
-
-.imageHolder {
+			.imageHolder {
 
 
 
-}
+			}
 
-.imageDetail {
+			.imageDetail {
 
-	width: 300px;
-	box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
-	border-radius: 15px;
-	margin: auto;
-	float: left;
-}
+				//box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+				border: 2px solid #e3e3e3;
+				border-radius: 5px;
 
+			}
 
-.postInfoHolder {
+			.postInfoHolder {
 
-	float: right; 
-	margin-top: 50px; 
-	margin-left: 30px; 
+				float: right; 
+				margin-top: 50px; 
+				margin-left: 30px; 
 
 
-}
+			}
 
-.firstHolder {
+			.firstHolder {
 
-	background-color: #000154;
-	width: auto;
-	border-radius: 15px;
-	box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
-	padding: 10px; 
-	max-width: 600px;
+				background-color: #000154;
+				width: auto;
+				border-radius: 15px;
+				box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+				padding: 10px; 
+				max-width: 600px;
 
-}
+			}
 
-.secondHolder {
+			.secondHolder {
 
-	border-radius: 15px;
-	font-size: 50px;
-	
-
-
-}
-
-.commentHolder {
-
-	background-color: #000154;
-	width: auto;
-	border-radius: 15px;
-	box-shadow: 0 4px 5px 0 grey, 0 6px 20px 0 grey;
-	padding: 10px; 
-	width: 400px;
-	margin-bottom: 0px; 
-	margin-left: 150px; 
-	color: white;
-
-}
-
-.commentForm {
-
-	margin-left: 150px;
-	width: 300px;
-	height: 50px;
-	border-radius: 5px;
-	font-size: 10px;
+				border-radius: 15px;
+				font-size: 50px;
+				//box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
 
 
-}
+			}
 
-.submitButton {
+			.commentHolder {
+
+				background-color: #000154;
+				width: auto;
+				border-radius: 15px;
+				box-shadow: 0 4px 5px 0 grey, 0 6px 20px 0 grey;
+				padding: 10px; 
+				width: 400px;
+				margin-bottom: 0px; 
+				margin-left: 50px; 
+				color: white;
+
+			}
+
+			.commentForm {
+
+				margin-left: 50px;
+				width: 300px;
+				height: 50px;
+				border-radius: 5px;
+				font-size: 10px;
 
 
-	width: 50px; 
-	height: 50px; 
-	border-radius: 50%/50%; 
-	position: relative; 
-	top: -15px; 
-	background-color: #000154;
-	border-color: white;
+			}
 
-}
+			.submitButton {
+
+
+				width: 50px; 
+				height: 50px; 
+				border-radius: 50%/50%; 
+				position: relative; 
+				top: -15px; 
+				background-color: #000154;
+				border-color: white;
+
+			}
 
 		</style>
-	
+		
 	</head>
 
 	<body>
 	
-		<img src="{{post.file.url}}" class="imageDetail" />
+		<div style="display: inline-block; position: absolute; bottom: 0px; width: 100%; top: 75px;">
 		
-		<div class="postInfoHolder"> 
-			<div class="firstHolder">
-				<div style="font-size: 20px; color: white;">{{ post.titleText }}<span style="font-size: 12px; color: #d1cfcf;"> posted by {{ post.user.username }}</span></div>
-				<div style="margin-left: 0px; margin-top: 10px; color: #d1cfcf; text-overflow: ellipsis; font-size: 14px;">{{ post.description }}</div>
-				<div style="margin-left: 0px; margin-top: 10px; color: #bababa; font-size: 14px;">{{ post.creation_date }}</div>
-			</div>		
-
+			<!-- Default Profile Card -->
+			<div id="defaultProfileCard" class="" style="width: 60%; height: 100%; border-right: 1px solid #e3e3e3; float: left;"> 
 			
-			<div class="secondHolder">
-			
-				<div style="margin-left: 10px; color: green;">${{ post.price }}</div>
+				<div style="display: inline-block; position: absolute; bottom: 165px; top: 10px; left: 15px; right: 40%;">
 				
-			</div>
-			
-		</div>
-	
-			
-	
-	
-	{% if post %} 
-	
-		{% if user.is_authenticated %}
-	
-			<div style="margin-top: 30px; margin-bottom: 10px;">
-			
-			
-				<form action="../{{post.id}}/" method="post" id="descriptionForm" style="display: inline-block">
-				
-					{% csrf_token %}
-				
-				<textarea class="commentForm" id="commentDescription" type="text" name="commentDescription" form="descriptionForm" value="" placeholder="Post a comment"></textarea>
-
-				<input type="submit" value ='/' class="submitButton">
-				</form>
-
-			
-			</div>
-			
-		{% else %}
-		
-			<div>
-			
-				You are not logged in.
-			
-			</div>
-		
-		{% endif %}
-	
-	{% endif %}
-
-	{% if commentList %}
-	
-		{% for commentVar in commentList %}
-		
-			{% if commentVar.commentPostID == post.id %}
-		
-				<div style="display: inline-block; width: 700px; margin-top: -10px">
-				
-					<div class="commentHolder">
-				
-					{{ commentVar.commentDescription }}
+					
+					<img src="{{post.file.url}}" style="width: 50%; height: 100%; border: 2px solid black;" class="imageDetail" /> 
+					<div style="position: absolute; left: 50%; top: 0px; right: 0px; height: 100%;">
+					
+						<div id='map' style="position: absolute; left: 20px; right: 20px; top: 0px; bottom: 0px; border: 2px solid #e3e3e3; border-radius: 5px;">
+					
+						
+						</div>
 					
 					</div>
 					
-					<div style="position: relative; top: -48px; margin-left: 455px; color: grey; ">
-						<div>{{ commentVar.user }}</div>
-						<div>{{ commentVar.creation_date }}</div>
-						
+				</div>
+				
+				<div style="background-color: #f5f5f5; height: 125px; position: absolute; bottom: 20px; left: 15px; right: 40%; margin-right: 20px; border: 1px solid #e3e3e3; border-radius: 5px;">
+				
+					<div style="margin-left: 10px; margin-top: 5px; font-size: 20px;">{{ post.titleText }} <span style="font-size: 10px;">posted by {{ post.user.first_name }} {{ post.user.last_name }}</span></div>
+					<div style="font-size: 12px; margin-left: 10px;">{{ post.description }}</div>
+					
+					<div style="font-size: 20px; position: absolute; left: 10px; bottom: 10px; color: #0db80d;">
+					
+						${{ post.price }}
+					
+					</div>
+					
+					<div style="position: absolute; right: 10px; bottom: 10px;">
+					
+						<a href="mailto:{{ post.user.email }}">Contact {{ post.user.first_name }} </a>
+					
 					</div>
 				
 				</div>
 				
-				<br>
-				
-			{% endif %}
-			
-		
-		{% endfor %}
-	
-	
-	{% else %}
-	
-	
-	{% endif %}
-	
-	
-	
-
-
-		<!--
-		<div class="card" style="width: 18rem;">
-
-			<div class="card-body">
-			  <h5 class="card-title">{{ post.titleText }}</h5>
-			  <p class="card-text">{{ post.description }}</p>
-			  <p class="card-text">Category: {{ post.category }}</p>
-			  <p class="card-text">Price: {{ post.price }}</p>
-			  <p class="card-text">Date: {{ post.creation_date }}</p>
-			  <p class="card-text"> Post Creator: <a href= "mailto: {{post.user.email}}">{{post.user.email}}</a></p>
-			  <img src="{{post.file.url}}"/>
-
-			  <a href="/posts" class="btn btn-primary">Go Back</a>
 			</div>
-		  </div>
-		  -->
-		  
+			
+			<div style="width: 40%; margin-left: 60%;"> 
+			
+				<!-- Comment List -->
+				<div style="overflow-y: auto; position: absolute; bottom: 165px; right: 0px; top: 0px; width: 40%;">
+				
+				
+				{% if commentList %}
+	 
+					{% for commentVar in commentList %}
+					
+						{% if commentVar.commentPostID == post.id %}
+					
+							<center>
+							<div class="" style="display: inline-block; text-align: left; width: 95%; margin-top: 10px; padding: 5px; margin-bottom: 5px; border: 1px solid #e3e3e3; border-radius: 5px; background-color: #f5f5f5;">
+							
+								<div>
+								{{ commentVar.commentDescription }}
+								</div>
+								
+								<div style="font-size: 10px; color: grey;">
+								{{ commentVar.user.first_name }} {{ commentVar.user.last_name }} {{ commentVar.creation_date }}
+								</div>
+							
+							</div>
+							</center>
+							
+							
+						{% endif %}
+						
+					
+					{% endfor %}
+				
+				
+				{% else %}
+				
+				
+				{% endif %}
+	
+				
+				
+				</div>
+			
+				<div style="position: absolute; bottom: 0px; right: 0px; width: 40%; height: 165px; padding-top: 15px; border-top: 1px solid #e3e3e3; background-color: white;"> 
+				
+				
+					
+					<!-- <a style="float: right;" class="btn btn-primary" style="color: white;" onclick="editProfile()">Edit Profile</a> -->
+				
+					{% if post %} 
+					
+						{% if user.is_authenticated %}
+					
+							<div style="">
+							
+							
+								<form action="../{{post.id}}/" method="post" id="descriptionForm" style="display: inline-block; position: absolute; bottom: 0px; right: 20px; left: 0px;">
+								
+									{% csrf_token %}
+								
+									<center>
+									<div class="input-group mb-3" style="position: relative; left: 10px; right: 10px; text-align: left;">
+										<textarea style="resize: none;" class="form-control" id="commentDescription" type="text" name="commentDescription" form="descriptionForm" value="" placeholder="Post a comment"></textarea>
+									</div>
+									</center>
+
+								<input type="submit" value ='Submit' class="btn btn-outline-primary" style="margin-left: 10px;">
+								</form>
+
+							
+							</div>
+							
+						{% else %}
+						
+							<div>
+							
+								You are not logged in.
+							
+							</div>
+						
+						{% endif %}
+					
+					{% endif %}
+								
+				
+				
+
+				</div>
+			
+			</div>
+		
+		</div>
+
+			<script>
+		
+			mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
+			var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-78.509, 38.033],
+			zoom: 14,
+			bearing: 8
+			});
+
+			map.addControl(new MapboxGeocoder({
+			accessToken: mapboxgl.accessToken,
+			mapboxgl: mapboxgl
+			}));
+
+		</script>
+		
+		
 	</body>
+
 </html>
