@@ -227,7 +227,8 @@ Bootstrap Header
 					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
 			  
 				{% endif %}
-			  
+				
+			  	{% if postList %}
 				<div class="panel-body"> 
 				
 					<div style="display: inline-block; width: 800px;">
@@ -270,6 +271,7 @@ Bootstrap Header
 					</div>
 				
 				</div>
+				{% endif %}
 				
 			  </div>
 			  
