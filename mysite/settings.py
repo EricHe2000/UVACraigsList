@@ -215,5 +215,6 @@ if 'I_AM_HEROKU' in os.environ:
     import django_heroku
     django_heroku.settings(locals())
 SITE_ID = 1
+TIME_ZONE = 'America/New_York'
 
 
