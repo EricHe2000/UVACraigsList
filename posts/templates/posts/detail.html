@@ -230,23 +230,26 @@
 		
 		</div>
 
-			<script>
-		
-			mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
-			var map = new mapboxgl.Map({
-			container: 'map',
-			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [-78.509, 38.033],
-			zoom: 14,
-			bearing: 8
-			});
+<center>
+<div id='map' style='width: 700px; height: 400px;'></div>
+</center>
 
-			map.addControl(new MapboxGeocoder({
-			accessToken: mapboxgl.accessToken,
-			mapboxgl: mapboxgl
-			}));
-
-		</script>
+<body>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+center: [-78.509, 38.033], // starting position [lng, lat]
+zoom: 14, // starting zoom
+bearing: 8
+});
+var marker = new mapboxgl.Marker()
+  .setLngLat([-78.51, 38.034])
+  .addTo(map);
+</script>
+ 
+</body>
 		
 		
 	</body>

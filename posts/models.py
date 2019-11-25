@@ -62,6 +62,8 @@ class Post(models.Model):
     # user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.ImageField(verbose_name= 'file',null=True, blank=True)
+    longitude = models.DecimalField(max_digits=17, decimal_places=14)
+    latitude = models.DecimalField(max_digits=17, decimal_places=14)
 
     def __str__(self):
         return self.titleText

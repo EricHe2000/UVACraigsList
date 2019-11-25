@@ -45,6 +45,7 @@
 
 	
 <center>
+<p id="latlong"></p>
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
@@ -69,8 +70,12 @@
   accessToken: mapboxgl.accessToken,
   mapboxgl: mapboxgl,
   bbox: [-80, 35, -75, 42],
-
 }));
+	
+	map.on('move', function(e)
+	{
+	document.getElementById("latlong").innerHTML = map.getCenter();
+	});
 </script>
 </center>
 
