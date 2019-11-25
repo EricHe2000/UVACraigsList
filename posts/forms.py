@@ -46,6 +46,10 @@ class PostForm(forms.ModelForm):
         exclude=['user']
         # fields=('titleText','description','category','price','file')
 
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.fields['file'].required = False
+
 
 class CommentForm(forms.ModelForm):
 

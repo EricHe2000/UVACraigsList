@@ -1,0 +1,105 @@
+<!-- 
+	This links an external css file in the directory of index.html.
+	Within postsStylesheet.css are the rules to style this html page.
+-->
+<link rel="stylesheet" type="text/css" href="posts.css">
+
+<!--
+	This adds bootstrap elements, but as external links.
+	I didn't feel like building it from file, though this does need to be changed.
+-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--
+	This includes the javascript that is necessrary to make the bootstrap features work.
+-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<header>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000154;">
+		<a class="navbar-brand" style="color:white;" href="/">UVA Listings</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				
+				<li class="nav-item active">
+					<div class="dropdown" style="margin: auto; width: 50%; padding: 10px; float: left;">
+						<button style="border: 0.5px solid white; background-color: #000154;" class="btn btn-secondary dropdown-toggle" style="background-color:#000154;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Categories
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="/category/electronics/">Electronics</a>
+							<a class="dropdown-item" href="/category/services/">Services</a>
+							<a class="dropdown-item" href="/category/housing/">Housing</a>
+							<a class="dropdown-item" href="/category/food/">Food</a>
+							<a class="dropdown-item" href="/category/tutoring/">Tutoring</a>
+							<a class="dropdown-item" href="/category/community/">Community</a>
+							<a class="dropdown-item" href="/category/textbooks/">Textbooks</a>
+							<a class="dropdown-item" href="/category/clothes/">Clothes</a>
+							<a class="dropdown-item" href="/category/misc/">Miscellaneous</a>
+						</div>
+					</div>
+					
+				</li>
+
+				{% if user.is_authenticated %}
+
+				<li class="nav-item" style="font-size: 18px; margin: auto;">
+					<a class="nav-link" style="color:white;" href="{% url 'social:begin' 'google-oauth2' %}">{{ user.username }}</a>
+				</li>
+				
+				{% else %}
+				
+				<li class="nav-item" style="font-size: 18px; margin: auto;">
+					<a class="nav-link" style="color:white;" href="{% url 'social:begin' 'google-oauth2' %}">Login</a>
+				</li>
+				
+				{% endif %}
+
+
+				{%if user.is_authenticated%}
+
+				<li class="nav-item" style="font-size: 18px; margin: auto; margin-left: 8px;">
+					<a class="nav-link" style="color:white;" onclick="location.href = '/newpost';">New Post</a>
+
+
+					<!-- <a class="nav-link" href=var>New Post</a> -->
+				</li>
+				<li class="nav-item" style="font-size: 18px; margin: auto; margin-left: 8px;">
+					<a class="nav-link" style="color:white;" onclick="location.href = '/posts';">Recent Posts</a>
+
+
+					<!-- <a class="nav-link" href=var>New Post</a> -->
+				</li>
+
+				{%endif%}
+
+				<!-- Search bar -->
+			</div>
+		</ul>
+		
+		<form class="form-inline my-2 my-lg-0"  action="/search" method="get" accept-charset="utf-8">
+			<input class="form-control mr-sm-2 searchfield"  type="text" name="q" placeholder="Search" aria-label="Search">
+			<button style="border: 0.5px solid white; background-color: #000154; margin-left: 10px;" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+		</form>
+
+
+            <!-- 	<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form> -->
+
+		</div>
+	</nav>
+
+</header>
