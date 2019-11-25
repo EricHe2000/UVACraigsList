@@ -2,6 +2,7 @@
 
 {% load crispy_forms_tags %}
 <head>
+	
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 
@@ -18,10 +19,9 @@
 		<center>
 			<p> You are logged in as {{user.username}}</p>
 			<table>
-				<form action="" method="POST" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{form.as_table}}
-
 				</table>
 				<button type="submit">Upload Post </button>
 
@@ -37,6 +37,13 @@
 		
 	</form>
 	
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+	
 <center>
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
@@ -48,14 +55,25 @@
 	zoom: 14,
 	bearing: 8
   });
+ 
+	var geocoder = new MapboxGeocoder({
+	accessToken: mapboxgl.accessToken,
+	marker: {
+	color: 'orange'
+	},
+	mapboxgl: mapboxgl
+	});
+ 
   
   map.addControl(new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
-  mapboxgl: mapboxgl
+  mapboxgl: mapboxgl,
+  bbox: [-80, 35, -75, 42],
+
 }));
 </script>
 </center>
-		
+
 </body>
 
 <!-- 
