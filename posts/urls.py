@@ -10,5 +10,5 @@ urlpatterns = [
     path('<int:num>/', views.PostDetailView, name='detail'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('posts', views.postIndex, name='posts'),
-    
+    path('<int:num>/delete', views.getPostDelete, name='getPostDelete'),
 ]

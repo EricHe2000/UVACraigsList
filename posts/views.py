@@ -260,6 +260,11 @@ def PostDetailView(request, num=1):
     context = {'post': post, 'commentList': commentList, 'form': form} 
     return render(request, 'posts/detail.html',context)   
 
+def getPostDelete(request, num =1):
+    post = get_object_or_404(Post, pk=num)
+    post.delete()
+    return redirect('/profile/')
+
 class SearchResultsView(generic.ListView):
     model = Post
     template_name = 'search_results.html'
