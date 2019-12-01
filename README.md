@@ -5,7 +5,7 @@ Our aim is to build an online marketplace for UVA students and faculty to enable
 
 ## The Website:
 ![The Homepage](/images/homepage.png)
-![Create Post](/images/'Create Post.png')
+![Create Post](/images/create_post.png)
 ![Profile Page](/images/profile_page.png)
 ![A Post](/images/post.png)
 ![Details about the Post you clicked on](/images/post_details.png)
