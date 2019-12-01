@@ -1,17 +1,20 @@
-# Project: UVA Craiglist
+# CS 3240 Semester Project: UVA Craigslist
 
-An online marketplace for UVA students to enable them to buy and sell goods and services to other fellow students. Modeled after the online marketplace: Craigslist.
+Our aim is to build an online marketplace for UVA students and faculty to enable them to buy and sell goods and services to other fellow UVA students and faculty. The inspiration behind our approach is modeled after the popular online marketplace: Craigslist.
 [Click here to go to our website!](https://renamelater-craigslist.herokuapp.com/)
+
+## The Website:
+![GitHub Logo](/images/logo.png)
 
 ## Team Roles:
 
 ### Scrum Master: 
-#### Tahmid Kazi
+#### Tahmid Kazi (tk3kb)
 ### Requirements Manager: 
-#### Henry Nixon
+#### Henry Nixon (hcn2ey)
 ### Software Architect: 
-#### Jacob Clatterbuck
+#### Jacob Clatterbuck (jhc5wf)
 ### Testing Manager: 
-#### Charles Ferraro
+#### Charles Ferraro ( )
 ### Configuration Manager: 
-#### Eric He
+#### Eric He (eh4xv)
