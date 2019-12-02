@@ -21,6 +21,6 @@ Our aim is to build an online marketplace for UVA students and faculty to enable
 ### Software Architect: 
 #### Jacob Clatterbuck (jhc5wf)
 ### Testing Manager: 
-#### Charles Ferraro ( )
+#### Charles Ferraro (cbf6yd)
 ### Configuration Manager: 
 #### Eric He (eh4xv)
