@@ -4,12 +4,18 @@ Our aim is to build an online marketplace for UVA students and faculty to enable
 [Click here to go to our website!](https://renamelater-craigslist.herokuapp.com/)
 
 ## The Website:
+When you first click the link, you will be greeted with our homepage. To do anything on this website, you need to be logged in using you UVA Netbadge credentials. Click the login button to get started!.
 ![The Homepage](/images/homepage1.png)
-![Create Post](/images/create_post1.png)
+When you login, you will be directed to you profile page where you can view your listing or change your account information
 ![Profile Page](/images/profile_page1.png)
-![A Post](/images/post1.png)
-![Details about the Post you clicked on](/images/post_details1.png)
+The list of recent posts:
 ![List of Recent Posts](/images/recent_posts1.png)
+One of the integral parts of the website: Make a listing of the item you want to sell.
+![Create Post](/images/create_post1.png)
+To view products that you want to buy, click on the link to reveal a drop down menu that displays the item
+![A Post](/images/post1.png)
+You can view more details about the post:
+![Details about the Post you clicked on](/images/post_details1.png)
 
 
 ## Team Roles:
