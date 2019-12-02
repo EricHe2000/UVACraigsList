@@ -4,12 +4,12 @@ Our aim is to build an online marketplace for UVA students and faculty to enable
 [Click here to go to our website!](https://renamelater-craigslist.herokuapp.com/)
 
 ## The Website:
-![The Homepage](/images/homepage.png)
-![Create Post](/images/create_post.png)
-![Profile Page](/images/profile_page.png)
-![A Post](/images/post.png)
-![Details about the Post you clicked on](/images/post_details.png)
-![List of Recent Posts](/images/recent_posts.png)
+![The Homepage](/images/homepage1.png)
+![Create Post](/images/create_post1.png)
+![Profile Page](/images/profile_page1.png)
+![A Post](/images/post1.png)
+![Details about the Post you clicked on](/images/post_details1.png)
+![List of Recent Posts](/images/recent_posts1.png)
 
 
 ## Team Roles:
