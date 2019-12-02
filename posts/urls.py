@@ -11,6 +11,6 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('posts', views.postIndex, name='posts'),
     path('blank', views.blankView, name='blank'),
+    path('<int:num>/delete', views.getPostDelete, name='getPostDelete'),
 
-    
 ]

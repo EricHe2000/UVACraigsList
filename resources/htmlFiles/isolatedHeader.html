@@ -36,6 +36,7 @@
 
 
 
+
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000154; border-radius: 0px; height: 59px; z-index: 5;">
         <a class="navbar-brand" style="color:white;" href="/">UVA Listings</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,6 +95,7 @@
 
 
 
+
                 {%if user.is_authenticated%}
 
                 <li class="nav-item" style="font-size: 18px; margin: auto; margin-left: 8px;">
@@ -101,19 +103,19 @@
                 <a class="nav-link" style="color:white;" onclick="location.href = '/newpost';">New Post</a>
 
 
-                    <!-- <a class="nav-link" href=var>New Post</a> -->
-                </li>
+					<!-- <a class="nav-link" href=var>New Post</a> -->
+				</li>
 
-                {%endif%}
+				{%endif%}
 
 				<!-- Search bar -->
-				  </div>
-			 </ul>
-							
-			<form class="form-inline my-2 my-lg-0"  action="/search" method="get" accept-charset="utf-8">
-				<input class="form-control mr-sm-2 searchfield"  type="text" name="q" placeholder="Search" aria-label="Search">
-				<button style="border: 0.5px solid white; background-color: #000154; margin-left: 10px;" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-				</form>
+			</div>
+		</ul>
+		
+		<form class="form-inline my-2 my-lg-0"  action="/search" method="get" accept-charset="utf-8">
+			<input class="form-control mr-sm-2 searchfield"  type="text" name="q" placeholder="Search" aria-label="Search">
+			<button style="border: 0.5px solid white; background-color: #000154; margin-left: 10px;" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+		</form>
 
 
             <!-- 	<form class="form-inline my-2 my-lg-0">
@@ -122,7 +124,7 @@
 			</form> -->
 
 		</div>
-    </nav>
+	</nav>
 
 </header>
 

@@ -265,7 +265,10 @@ Bootstrap Header
 							</div>
 							
 							<a class="btn btn-outline-primary" style="margin-top: 10px; border: 1px solid blue;" href="/posts/{{ postVar.id }}/">More</a>
-						
+							
+							{% if postVar.user == request.user %}
+							<a class="btn btn-outline-danger" style="margin-top: 10px; border: 1px solid red;" href="/posts/{{ postVar.id }}/delete">Delete</a>
+							{%endif%}
 						
 						</div>
 					</div>

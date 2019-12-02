@@ -104,8 +104,9 @@
 			
 				<div style="display: inline-block; position: absolute; bottom: 165px; top: 10px; left: 15px; right: 40%;">
 				
-					
+					{% if post.file %}
 					<img src="{{post.file.url}}" style="width: 50%; height: 100%; border: 2px solid black;" class="imageDetail" /> 
+          {%endif%}
 					<div style="position: absolute; left: 50%; top: 0px; right: 0px; height: 100%;">
 					
 						<div id='map' style="position: absolute; left: 20px; right: 20px; top: 0px; bottom: 0px; border: 2px solid #e3e3e3; border-radius: 5px;">
