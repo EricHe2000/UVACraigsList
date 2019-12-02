@@ -54,6 +54,20 @@
 		color: white;
 	
 	}
+	
+	.mainImage {
+	
+		position: relative;
+		bottom: 0px; 
+		width: 300px;
+	
+	}
+	
+	.mainImage:hover {
+	
+		opacity: 0.8;
+	
+	}
 
 	
 </style>
@@ -79,12 +93,18 @@
 
   <body>
 
-    <main role="main">
+    <main role="main" style="width: 100%;">
+<!-- <img src="https://brohammas.files.wordpress.com/2012/09/rotunda-mall.jpg" style="position: absolute; top: 0px; left: 0px; right: 0px; width: 1000px; z-index: 2;"> -->
+    <!--   <section class="jumbotron text-center" style="border: 1px solid red; padding: 0px; height: 300px; background-image: url('https://brohammas.files.wordpress.com/2012/09/rotunda-mall.jpg');  background-position: center;"> -->
+	  <section class="jumbotron text-center" style="border-radius: 0px;">
+		<a href="/posts/">
+		<img class="mainImage" src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Virginia_Cavaliers_sabre.svg/1200px-Virginia_Cavaliers_sabre.svg.png" >
+		</a>
+        <div class="container" style="">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">UVA Listings</h1>
-          <p class="lead text-muted">Browse listings from your fellow students. Select a category below to begin.</p>
+		
+          <p class="jumbotron-heading" style="margin-bottom: -20px; font-family: Georgia; font-style: italic;">UVA Listings</p>
+<!--           <p class="lead text-muted">Browse listings from your fellow students. Select a category below to begin.</p>
           <p>
 			
 			{% if user.is_authenticated %}
@@ -98,7 +118,7 @@
 			{% endif %}
 			
             <a href="/posts/" class="btn btn-secondary my-2">Recent Posts</a>
-          </p>
+          </p> -->
         </div>
       </section>
 
@@ -109,25 +129,25 @@
 	<div class="container">
 	  <div class="card-deck">
 	  
-		<div class="card primaryCardClass" onclick="location.href='/category/electronics/';">
+		<div style="cursor: pointer;" class="card primaryCardClass" onclick="location.href='electronics/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Electronics</div>
 		  </div>
 		</div>
 		
-		<div class="card secondaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='/category/services/';">
+		<div style="cursor: pointer;" class="card secondaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='services/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Services</div>
 		  </div>
 		</div>
 		
-		<div class="card secondaryCardClass" onclick="location.href='/category/housing/';">
+		<div style="cursor: pointer;" class="card secondaryCardClass" onclick="location.href='housing/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Housing</div>
 		  </div>
 		</div>
 		
-		<div class="card primaryCardClass" onclick="location.href='/category/food/';">
+		<div style="cursor: pointer;" class="card primaryCardClass" onclick="location.href='food/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Food</div>
 		  </div>
@@ -141,23 +161,23 @@
 	<div class="container">
 	  <div class="card-deck">
 	  
-		<div id="textbookCard" class="card primaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='/category/tutoring/';">
+		<div style="cursor: pointer;" id="textbookCard" class="card primaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='tutoring/';">
 		  <div class="card-body text-center innerTextCardClass">Tutoring</div>
 		</div>
 		
-		<div class="card secondaryCardClass">
-		  <div class="card-body text-center" onclick="location.href='/category/community/';">
+		<div style="cursor: pointer;" class="card secondaryCardClass">
+		  <div class="card-body text-center" onclick="location.href='community/';">
 			<div class="card-text innerTextCardClass">Community</div>
 		  </div>
 		</div>
 		
-		<div class="card secondaryCardClass">
-		  <div class="card-body text-center" onclick="location.href='/category/textbooks/';">
+		<div style="cursor: pointer;" class="card secondaryCardClass">
+		  <div class="card-body text-center" onclick="location.href='textbooks/';">
 			<div class="card-text innerTextCardClass">Textbooks</div>
 		  </div>
 		</div>
 		
-		<div class="card primaryCardClass" onclick="location.href='/category/clothes/';">
+		<div style="cursor: pointer;" class="card primaryCardClass" onclick="location.href='clothes/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Clothes</div>
 		  </div>
@@ -171,13 +191,13 @@
 	<div class="container">
 	  <div class="card-deck">
 	  
-		<div class="card primaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='/category/misc/';">
+		<div style="cursor: pointer;" class="card primaryCardClass" style="width: 275px; height: 275px;" onclick="location.href='misc/';">
 		  <div class="card-body text-center">
 			<div class="card-text innerTextCardClass">Miscellaneous</div>
 		  </div>
 		</div>
 		
-		<!--
+		
 		<div class="card bg-warning" style="visibility: hidden;">
 		  <div class="card-body text-center">
 			<div class="card-text">Services</div>
@@ -195,24 +215,7 @@
 			<div class="card-text">Food</div>
 		  </div>
 		</div>  
-		-->
-		
-		<div id='map' style='width: 855px; height: 275px; border-radius: 5px;'></div>
-		<script>
-		  mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbXJlbmFtZWxhdGVyIiwiYSI6ImNrMzRnb3ozcTEyZnozbm1vNzc5MXV0NWYifQ.esg5yN_DJAgReRBLyws-tw';
-		  var map = new mapboxgl.Map({
-			container: 'map',
-			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [-78.509, 38.033],
-			zoom: 14,
-			bearing: 8
-		  });
-		  
-		  map.addControl(new MapboxGeocoder({
-		  accessToken: mapboxgl.accessToken,
-		  mapboxgl: mapboxgl
-		}));
-		</script> 
+
 		
 	  </div>
 	</div>

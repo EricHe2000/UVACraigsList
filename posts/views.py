@@ -178,10 +178,15 @@ def add_Post_view(request):
             post.user=request.user
             post.save()
 
-            return HttpResponseRedirect('/posts')
+            return HttpResponseRedirect('/posts/')
     else:
         form=PostForm()
     return render(request, 'posts/newpost.html', {'form': form})
+    
+    
+def blankView(request):
+
+    return render(request, 'posts/blank.html')
 
 
 

@@ -30,15 +30,15 @@ urlpatterns = [
     
     #Beginning of category links work-around
     
-    path('category/electronics/', views.categoryElectronicsIndex, name='index'),
-    path('category/services/', views.categoryServicesIndex, name='index'),
-    path('category/misc/', views.categoryMiscellaneousIndex, name='index'),
-    path('category/housing/', views.categoryHousingIndex, name='index'),
-    path('category/food/', views.categoryFoodIndex, name='index'),
-    path('category/community/', views.categoryCommunityIndex, name='index'),
-    path('category/textbooks/', views.categoryTextbookIndex, name='index'),
-    path('category/tutoring/', views.categoryTutoringIndex, name='index'),
-    path('category/clothes/', views.categoryClothesIndex, name='index'),
+    path('electronics/', views.categoryElectronicsIndex, name='index'),
+    path('services/', views.categoryServicesIndex, name='index'),
+    path('misc/', views.categoryMiscellaneousIndex, name='index'),
+    path('housing/', views.categoryHousingIndex, name='index'),
+    path('food/', views.categoryFoodIndex, name='index'),
+    path('community/', views.categoryCommunityIndex, name='index'),
+    path('textbooks/', views.categoryTextbookIndex, name='index'),
+    path('tutoring/', views.categoryTutoringIndex, name='index'),
+    path('clothes/', views.categoryClothesIndex, name='index'),
     
     #End of category links work-around
     

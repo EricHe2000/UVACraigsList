@@ -140,7 +140,7 @@
 			
 							{% csrf_token %}
 						
-							<input style="margin-bottom: 10px;" class="editProfileFormCSS form-control" id="email" type="text" name="email" form="editProfileForm" disabled value="{{ user.email }}" placeholder="Email"></input>
+							<input style="margin-bottom: 10px;" class="editProfileFormCSS form-control" id="email" type="text" name="email" form="editProfileForm"  readonly="readonly" value="{{ user.email }}" placeholder="Email"></input>
 
 							<input style="margin-bottom: 10px;" class="editProfileFormCSS form-control" id="first_name" type="text" name="first_name" form="editProfileForm" value="" placeholder="First Name"></input>
 					
