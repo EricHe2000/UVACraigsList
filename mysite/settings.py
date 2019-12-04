@@ -150,9 +150,9 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'IdqvxcPW6y5le4uTlHuBLnTQ'
 
 #SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['virginia.edu']
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
-    'hd': 'virginia.edu'
-}
+#SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
+#    'hd': 'virginia.edu'
+#}
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 'https://www.googleapis.com/auth/userinfo.email',
