@@ -169,7 +169,6 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 
 #Upload media stuff
 AWS_ACCESS_KEY_ID = 'AKIASHXIHBZ7HFLAHRPK'
-AWS_SECRET_ACCESS_KEY = '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' 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'uvacraigslist'
 AWS_S3_REGION_NAME = 'us-east-1'
